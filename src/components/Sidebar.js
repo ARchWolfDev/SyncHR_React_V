@@ -27,10 +27,10 @@ function Sidebar() {
           <h1 className="s-logo">S.</h1>
         </div>
         <div className={`${offCanvan ? 'offcanvan show' : ''} sidebar-items`}>
-          <div className="active">Home</div>
-          <div onClick={handleFormOne}>Form 1</div>
-          <div onClick={handleFormTwo}>Form 2</div>
-          <div>Home</div>
+          <div role='button' className="active-nav-item">Home</div>
+          <div role='button' onClick={handleFormOne}>Form 1</div>
+          <div role='button' onClick={handleFormTwo}>Form 2</div>
+          <div role='button' >Home</div>
           <div
             typeof="button"
             onClick={triggerOffCanvan}

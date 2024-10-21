@@ -1,3 +1,7 @@
+:root {
+  --bs-link-color: #5e17eb!important;
+  --bs-link-hover-color: #4200c7!important; 
+}
 .btn-primary {
   --bs-btn-color: #fff;
   --bs-btn-bg: #5e17eb!important;
@@ -30,6 +34,7 @@
     border-color: #5e17eb !important;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 3px 3px rgba(94, 23, 235, 0.4) !important;
 }
+.nav-pills {--bs-nav-pills-link-active-bg: #5e17eb!important;}
 @media screen and (max-width: 1375px) {
   .sidebar {
     width: 60px!important;
@@ -121,7 +126,7 @@ body { background: #ddd!important; }
   padding: 1.5%;
 }
 .menu-button {display: none;}
-.active {
+.active-nav-item {
   background-color: #5E17EB;
   border-color: #4200c7;
 }
@@ -180,6 +185,10 @@ body { background: #ddd!important; }
   padding: 20px;
   margin: 0 10px;
   margin-bottom: 1rem;
+}
+.info-box {
+  margin: 10px 0px;
+  width: 75%!important;
 }
 .br {
   height: 0.1px;
