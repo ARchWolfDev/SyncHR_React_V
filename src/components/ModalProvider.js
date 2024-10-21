@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useState } from "react";
 import Modal from "./Modal";
+import { useToastContext } from "./ToastMessageBoxProvider";
 
 const ModalContext = createContext();
 
 export const ModalProvider = ({ children }) => {
 
+    const {handleToastMessageBox} = useToastContext();
     const [modalShow, setModalShow] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
     const [modalContent, setModalContent] = useState(() => () => null); // Updated to store a component function
@@ -22,6 +24,7 @@ export const ModalProvider = ({ children }) => {
 
   const handleSaveChanges = () => {
     console.log("Saving data:", value);
+    handleToastMessageBox('')
     setModalShow(false); // Close the modal after saving
   };
 
