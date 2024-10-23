@@ -34,7 +34,7 @@ function PageContent() {
 
   const renderMostUsedTasks = () => {
     const mostUsedTasks = ['Cras justo odio', 'Dapibus ac facilisis in', 'Morbi leo risus', 'Porta ac consectetur ac']
-    const listTasks = mostUsedTasks.map((task) => <ListGroup.Item><i className="fa-regular fa-circle-dot fa-2xs" style={{color: "#b6b9be", marginRight: '10px'}}></i> {task}</ListGroup.Item>)
+    const listTasks = mostUsedTasks.map((task, index) => <ListGroup.Item key={index}><i className="fa-regular fa-circle-dot fa-2xs" style={{color: "#b6b9be", marginRight: '10px'}}></i> {task}</ListGroup.Item>)
 
     return listTasks
   }
@@ -95,7 +95,7 @@ function PageContent() {
             </Nav>
             {renderInfoBox()}
           </Col>
-          <Col>
+          <Col className='search-box'>
             <Nav variant="pills" defaultActiveKey="employeesBox"  style={{justifyContent: 'center'}}>
               <Nav.Item>
                 <Nav.Link eventKey='employeesBox' onClick={() => handleNavTabs2(0)}><i className="fa-solid fa-users"></i> Employees</Nav.Link>

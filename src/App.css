@@ -65,6 +65,7 @@
     padding: 0 10px!important;
   }
   .info-box {width: 100%!important;}
+  .search-box {display: none;}
 }
 @media screen and (max-width: 768px) {
   .sidebar {
@@ -267,4 +268,23 @@ body { background: #ddd!important; }
 .scrollable-list {
   max-height: 200px;
   overflow-y: auto;
+}
+.no-content-message {
+  width: 50%;
+  margin: auto;
+  margin-top: 25%;
+  text-align: center;
+}
+/* Custome border that apply only for bottom, left and right */
+.accordion-custom-border {
+  border-left: solid 0.5px #ddd;
+  border-right: solid 0.5px #ddd;
+  border-bottom: solid 0.5px #ddd;
+}
+.accordion-custom-checkbox {
+  float: left;
+  margin-right: 10px;
+}
+.search-box {
+
 }
