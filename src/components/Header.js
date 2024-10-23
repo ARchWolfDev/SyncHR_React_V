@@ -8,7 +8,7 @@ function Header() {
   const {handleShowModal} = useModalContext();
 
   const handleAvatarEdit = () => {
-    handleShowModal('Edit avatar', "avatar")}
+    handleShowModal('Edit avatar', (prop) => <AvatarEditor {...prop} />)}
 
   return (
     <div className='heading'>
@@ -17,7 +17,7 @@ function Header() {
         <p>Role</p>
       </div>
       <div className='avatar-container'>
-        <img src={avatar} className='avatar'></img>
+        <img src={avatar} alt='Avatar' className='avatar'></img>
         <span onClick={handleAvatarEdit} className='edit-icon badge rounded-pill text-bg-danger'><i id="editIcon" className="fa-solid fa-wand-magic-sparkles"></i></span>
       </div>
     </div>

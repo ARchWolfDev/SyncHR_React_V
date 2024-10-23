@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
 import Calendar from './Calendar'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, ListGroup } from 'react-bootstrap'
 import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
 import Nav from 'react-bootstrap/Nav';
 import PersonalInfoBox from './PersonalInfoBox';
 import JobInfoBox from './JobInfoBox';
 import CompanyInfoBox from './CompanyInfoBox';
+import EmployeesBox from './EmployeesBox';
+import DepartmentsBox from './DepartmentsBox';
 
 function PageContent() {
 
   const [activeTab, setActiveTab] = useState(0)
+  const [activeTab2, setActiveTab2] = useState(0)
+
+  const handleNavTabs2 = (y) => {
+    setActiveTab2(y)
+  }
 
   const handleNavTabs = (x) => {
     setActiveTab(x)
@@ -19,6 +26,19 @@ function PageContent() {
     const infoBoxArray = [<PersonalInfoBox />, <JobInfoBox />, <CompanyInfoBox />]
     return (<div className='box info-box'>{infoBoxArray.at(activeTab)}</div>)
   }
+
+  const renderInfoBox2 = () => {
+    const infoBoxArray2 = [<EmployeesBox/>, <DepartmentsBox/>]
+    return (<div className='box info-box2'>{infoBoxArray2.at(activeTab2)}</div>)
+  }
+
+  const renderMostUsedTasks = () => {
+    const mostUsedTasks = ['Cras justo odio', 'Dapibus ac facilisis in', 'Morbi leo risus', 'Porta ac consectetur ac']
+    const listTasks = mostUsedTasks.map((task) => <ListGroup.Item><i className="fa-regular fa-circle-dot fa-2xs" style={{color: "#b6b9be", marginRight: '10px'}}></i> {task}</ListGroup.Item>)
+
+    return listTasks
+  }
+
 
   return (
     <div className='content'>
@@ -54,23 +74,37 @@ function PageContent() {
             <div className='box' style={{height: '55%'}}>
               <h5 style={{textAlign: 'center'}}>Most used tasks</h5>
               <div className='br'></div>
+              <ListGroup variant="flush">
+                  {renderMostUsedTasks()}
+              </ListGroup>
             </div>
           </Col>
         </Row>
         <Row style={{marginTop: '40px'}}>
-          <Col>
+          <Col className='info-col'>
             <Nav variant="pills" defaultActiveKey="infoBox0">
               <Nav.Item>
-                <Nav.Link eventKey='infoBox0' onClick={() => handleNavTabs(0)}>Personal info</Nav.Link>
+                <Nav.Link eventKey='infoBox0' onClick={() => handleNavTabs(0)}><i className="fa-solid fa-user"></i> Personal info</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="infoBox1" onClick={() => handleNavTabs(1)}>Job info</Nav.Link>
+                <Nav.Link eventKey="infoBox1" onClick={() => handleNavTabs(1)}><i className="fa-solid fa-briefcase"></i> Job info</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link eventKey="infoBox2" onClick={() => handleNavTabs(2)}>Company info</Nav.Link>
+                <Nav.Link eventKey="infoBox2" onClick={() => handleNavTabs(2)}><i className="fa-solid fa-building"></i> Company info</Nav.Link>
               </Nav.Item>
             </Nav>
             {renderInfoBox()}
+          </Col>
+          <Col>
+            <Nav variant="pills" defaultActiveKey="employeesBox"  style={{justifyContent: 'center'}}>
+              <Nav.Item>
+                <Nav.Link eventKey='employeesBox' onClick={() => handleNavTabs2(0)}><i className="fa-solid fa-users"></i> Employees</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="departmentsBox" onClick={() => handleNavTabs2(1)}><i className="fa-solid fa-sitemap"></i> Departments</Nav.Link>
+              </Nav.Item>
+            </Nav>
+            {renderInfoBox2()}
           </Col>
         </Row>
       </Container>

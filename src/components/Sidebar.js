@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useModalContext } from './ModalProvider';
-import Form1 from './Form1';
 import Form2 from './Form2';
 import { useToastContext } from './ToastMessageBoxProvider';
+import SettingsModal from './SettingsModal';
 
 function Sidebar() {
   const {handleToastMessageBox} = useToastContext();
   const {handleShowModal} = useModalContext();
   const [offCanvan, setOffCanvan] = useState(false);
 
-  const handleFormOne = () => {
-    handleShowModal('Form 1', (props) => <Form1 {...props} />);
+  const handleSettingsModal = () => {
+    handleShowModal('Settings', (props) => <SettingsModal {...props} />)
   };
 
   const handleFormTwo = () => {
@@ -34,7 +34,7 @@ function Sidebar() {
         </div>
         <div className={`${offCanvan ? 'offcanvan show' : ''} sidebar-items`}>
           <div role='button' className="active-nav-item">Home</div>
-          <div role='button' onClick={handleFormOne}>Form 1</div>
+          <div role='button' onClick={handleSettingsModal}>Settings</div>
           <div role='button' onClick={handleFormTwo}>Form 2</div>
           <div role='button' onClick={handleClick}>Home</div>
           <div

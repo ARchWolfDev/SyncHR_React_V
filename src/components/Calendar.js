@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { useModalContext } from './ModalProvider';
-import CalendarBody from './CalendarBody';
+import { Button } from 'react-bootstrap';
+import CalendarModal from './CalendarModal';
 
 function Calendar() {
 
@@ -10,7 +11,7 @@ function Calendar() {
     const {handleShowModal} = useModalContext()
 
     const handleCalendarData = (content) => {
-        handleShowModal(content, (props) => <CalendarBody {...props} selectedDate={content} />)
+        handleShowModal(content, (props) => <CalendarModal {...props} selectedDate={content} />)
     }
 
     const handlePreviousMonth = () => {
@@ -37,7 +38,19 @@ function Calendar() {
                 <div className='row align-items-center'>
                     <div className='col'><button onClick={handlePreviousMonth} className='btn btn-sm'><i className="fa-solid fa-chevron-left"></i></button></div>
                     <div className='col'><h2>{currentDate.toLocaleString('default', {month: 'long'})} {currentDate.getFullYear()}</h2></div>
-                    <div className='col'><button onClick={handleNextMonth} className='btn btn-sm'><i className="fa-solid fa-chevron-right"></i></button></div>
+                    <div className='col'>
+                        <button 
+                            onClick={handleNextMonth} 
+                            className='btn btn-sm'>
+                                <i className="fa-solid fa-chevron-right"></i>
+                        </button>
+                        <Button 
+                            variant="light" 
+                            style={{float: 'right'}} 
+                            size="sm">
+                                <i className="fa-solid fa-gear"></i>
+                        </Button>
+                    </div>
                 </div>
             </div>
         )
@@ -119,7 +132,7 @@ function Calendar() {
                 className={`col cell ${isToday ? 'today' : ''} ${isDateinArray(selectedDate, reqListDemo)}`}
                 style={startEndWeek(selectedDate)}
                 onClick={() => handleCalendarData(selectedDate.toDateString())} 
-                key={d}><div className='circle'>{d}</div></div>)
+                key={d}>{d}</div>)
 
             if ((d + startDate) % 7 === 0) {
                 rows.push(<div className="row calendar-row" key={d}>{cells}</div>);
