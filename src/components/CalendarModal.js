@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { Col, Container, Form, Row, Nav, Button, Accordion, ListGroup} from 'react-bootstrap'
+import { isEqual } from 'lodash';
 
 function CalendarModal(props) {
 
@@ -38,9 +39,20 @@ function CalendarModal(props) {
         ]
     }
 
+    const userInformation = useMemo(() => ({
+            'userId': 'EMP-10001',
+            'completeName': 'Andrei Rachieru',
+            'role': 'Manager',
+            'department': 'Management'
+        }), [])
+
+
+
     const [selectedProjects, setSelectedProjects] = useState([])
     const [selectedProject, setSelectedProject] = useState(''); 
     const [activeProjectIndex, setActiveProjectIndex] = useState(null)
+    const [checkedTasks, setCheckedTasks] = useState({})
+    const [previousCompletedData, setPreviousCompletedData] = useState(null)
 
     const handleSelectedProject = (e) => {
         const selectedProject = e.target.value
@@ -65,12 +77,32 @@ function CalendarModal(props) {
         }
     };
 
-    const handleTasks = (list) => {
+    const handleCheckboxChange = (project, taskList, task, isChecked) => {
+        setCheckedTasks(prevState => ({
+            ...prevState, 
+            [project]: {
+                ...prevState[project],
+                [taskList]: {
+                    ...prevState[project]?.[taskList],
+                    [task]: isChecked
+                }
+            }
+        }))
+    }
+
+    const handleTasks = (list, project) => {
         const tasks = projectTasks[list] || []
         if (tasks.length > 0) {
             return (
                 tasks.map((task, index) => (
-                    <ListGroup.Item key={index}><Form.Check key={task} className='accordion-custom-checkbox'></Form.Check>{task}</ListGroup.Item>
+                    <ListGroup.Item key={index}>
+                        <Form.Check 
+                            key={task} 
+                            className='accordion-custom-checkbox'
+                            checked={checkedTasks[project]?.[list]?.[task] || false}
+                            onChange={(e) => handleCheckboxChange(project, list,  task, e.target.checked)}
+                            >
+                        </Form.Check>{task}</ListGroup.Item>
                 ))
             )
         } else {
@@ -93,7 +125,7 @@ function CalendarModal(props) {
                                     <Accordion.Header>{list}</Accordion.Header>
                                     <Accordion.Body>
                                         <ListGroup>
-                                            {handleTasks(list)}
+                                            {handleTasks(list, project)}
                                         </ListGroup>
                                     </Accordion.Body>
                                 </Accordion.Item>
@@ -105,24 +137,37 @@ function CalendarModal(props) {
         }
     }
 
+    useEffect(() => {
+        const completedData = {
+            'REQ-1000': {
+                userInformation: userInformation,
+                [props.selectedDate]: checkedTasks
+            }
+        }
+        if (!isEqual(previousCompletedData, completedData)) {
+            setPreviousCompletedData(completedData)
+            props.setValue(completedData)
+        }
+    }, [checkedTasks, props, userInformation, previousCompletedData])
+
   return (
     <Container>
         <Row>
-            <Col style={{maxWidth: '30%', borderRight: '0.5px solid #ddd'}}>
+            <Col className='calendar-modal-emplyee-info'>
                 <Form>
-                    <Form.Group className="mb-3" controlId="firstName">
+                    <Form.Group className="mb-3" controlId="completeName">
                         <Form.Label>Employee</Form.Label>
-                        <Form.Control type="text" value={'Andrei Rachieru'} readOnly/>
+                        <Form.Control type="text" value={userInformation.completeName} readOnly/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="firstName">
+                    <Form.Group className="mb-3" controlId="role">
                         <Form.Label>Role</Form.Label>
-                        <Form.Control type="text" value={'Manager'} readOnly/>
+                        <Form.Control type="text" value={userInformation.role} readOnly/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="firstName">
+                    <Form.Group className="mb-3" controlId="department">
                         <Form.Label>Department</Form.Label>
-                        <Form.Control type="text" value={'Management'} readOnly/>
+                        <Form.Control type="text" value={userInformation.department} readOnly/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="firstName">
+                    <Form.Group className="mb-3" controlId="selectedDate">
                         <Form.Label>Selected Date</Form.Label>
                         <Form.Control type="text" value={props.selectedDate} readOnly/>
                     </Form.Group>

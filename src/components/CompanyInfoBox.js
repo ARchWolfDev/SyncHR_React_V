@@ -33,16 +33,6 @@ function CompanyInfoBox() {
           </Form.Group>
         </Form>
       </Col>
-      {/* <Col>
-        <h5><i className="fa-solid fa-map-location"></i> Direct Manager</h5>
-        <div className='br mb-3' ></div>
-        <Form>
-          <Form.Group className="mb-3" controlId="firstName">
-            <Form.Label>Manager Name</Form.Label>
-            <Form.Control type="text" value={'Andrei Rachieru'} readOnly/>
-          </Form.Group>
-        </Form>
-      </Col> */}
     </Row>
   </Container>
   )

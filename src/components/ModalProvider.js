@@ -10,7 +10,7 @@ export const ModalProvider = ({ children }) => {
     const [modalShow, setModalShow] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
     const [modalContent, setModalContent] = useState(() => () => null); // Updated to store a component function
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState({});
 
   const handleShowModal = (title, ContentComponent) => {
     setModalTitle(title);
@@ -23,7 +23,7 @@ export const ModalProvider = ({ children }) => {
   };
 
   const handleSaveChanges = () => {
-    console.log("Saving data:", value);
+    console.log(JSON.stringify(value));
     handleToastMessageBox('')
     setModalShow(false); // Close the modal after saving
   };

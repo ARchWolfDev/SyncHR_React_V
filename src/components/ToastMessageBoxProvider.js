@@ -11,7 +11,6 @@ export const ToastMessageBoxProvider = ({children}) => {
     const [message, setMessage] = useState('')
 
     const handleToastMessageBox = (x) => {
-        console.log(x)
         if (x === 'error') {
             setError('error')
             setIcon(<i className="fa-solid fa-triangle-exclamation"></i>)

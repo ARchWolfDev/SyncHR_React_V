@@ -1,9 +1,21 @@
-import React from 'react'
-import { Col, Container, Nav, Row } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Col, Container, Nav, Row} from 'react-bootstrap'
+import SettingsModal_Tab0 from './SettingsModal_Tab0'
+import SettingsModal_Tab1 from './SettingsModal_Tab1'
+import SettingsModal_Tab2 from './SettingsModal_Tab2'
 
 function SettingsModal() {
 
+    const [navTab, setNavTab] = useState(0)
 
+    const handleNavTab = (tabId) => {
+        setNavTab(tabId)
+    }
+
+    const renderTabContent = () => {
+        const tabContentArray = [<SettingsModal_Tab0/>, <SettingsModal_Tab1/>, <SettingsModal_Tab2/>]
+        return tabContentArray.at(navTab)
+    }
 
   return (
     <Container>
@@ -11,18 +23,18 @@ function SettingsModal() {
             <Col style={{maxWidth: '25%', borderRight: '0.5px solid #ddd'}}>
                 <Nav variant="pills" defaultActiveKey="link-0" className="flex-column">
                     <Nav.Item>
-                        <Nav.Link eventKey="link-0">Personal info</Nav.Link>
+                        <Nav.Link eventKey="link-0" onClick={() => handleNavTab(0)}><i className="fa-solid fa-user"></i> Personal info</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="link-1">Option 2</Nav.Link>
+                        <Nav.Link eventKey="link-1" onClick={() => handleNavTab(1)}><i className="fa-solid fa-house"></i> App settings</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="disabled">Disabled</Nav.Link>
+                        <Nav.Link eventKey="disabled" onClick={() => handleNavTab(2)}><i className="fa-solid fa-lock"></i> Security</Nav.Link>
                     </Nav.Item>
                 </Nav>
             </Col>
             <Col>
-                Content
+                {renderTabContent()}
             </Col>
         </Row>
     </Container>

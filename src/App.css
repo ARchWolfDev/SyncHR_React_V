@@ -102,6 +102,12 @@
     right: 10px!important;
     left: 10px
   }
+  .info-box .col {
+    min-width: 100%!important;
+  }
+  .calendar-modal-emplyee-info {
+    display: none!important;
+  }
 }
 body { background: #ddd!important; }
 .calendar-row { --bs-gutter-x: 0; }
@@ -273,6 +279,7 @@ body { background: #ddd!important; }
   width: 50%;
   margin: auto;
   margin-top: 25%;
+  margin-bottom: 25%;
   text-align: center;
 }
 /* Custome border that apply only for bottom, left and right */
@@ -285,6 +292,7 @@ body { background: #ddd!important; }
   float: left;
   margin-right: 10px;
 }
-.search-box {
-
+.calendar-modal-emplyee-info {
+  max-width: 30%!important;
+  border-right: 0.5px solid #ddd;
 }
