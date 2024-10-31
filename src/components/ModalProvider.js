@@ -23,13 +23,13 @@ export const ModalProvider = ({ children }) => {
   };
 
   const handleSaveChanges = () => {
-    console.log(JSON.stringify(value));
+    console.log("From ModalProvider", JSON.stringify(value));
     handleToastMessageBox('')
     setModalShow(false); // Close the modal after saving
   };
 
   return (
-    <ModalContext.Provider value={{ handleShowModal, value, setValue }}>
+    <ModalContext.Provider value={{ handleShowModal, value, setValue, modalShow }}>
       {children}
       <Modal
         show={modalShow}

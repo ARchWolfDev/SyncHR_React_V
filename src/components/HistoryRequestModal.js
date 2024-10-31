@@ -1,11 +1,11 @@
 import React from 'react'
 
-function SettingsModal_Tab2() {
+function HistoryRequestModal() {
   return (
     <div className='no-content-message'>
-      Not available yet
+        No Contect to Show
     </div>
   )
 }
 
-export default SettingsModal_Tab2
+export default HistoryRequestModal

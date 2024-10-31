@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SettingsModal_Tab1() {
+function SettingsModalTab2() {
   return (
     <div className='no-content-message'>
       Not available yet
@@ -8,4 +8,4 @@ function SettingsModal_Tab1() {
   )
 }
 
-export default SettingsModal_Tab1
+export default SettingsModalTab2

@@ -1,52 +1,79 @@
-import React from 'react'
-// import avatar from '../avatars/dog.png'
-import { Col, Container, Form, Row } from 'react-bootstrap'
+import React from 'react';
+import { Col, Container, Form, Row } from 'react-bootstrap';
 
 function PersonalInfoBox() {
+
+  const employeeInformation = {
+    'EMP-1001': {
+      'Basic Information': {
+        'First Name': 'Andrei',
+        'Last Name': 'Rachieru'
+      },
+      'Address Information': {
+        'Main Address': 'Str. One, Nr. 1',
+        'Second Address': ''
+      },
+      'Contact Information': {
+        'Phone Number': '0753830028',
+        '2nd Phone Number': '',
+        'Work Email': 'andrei.rachieru@yahoo.com',
+        'Personal Email': ''
+      },
+      'Links': {
+        'LinkedIn': ''
+      }
+    }
+  };
+
+  const handlePersonalInformation = (sectionInfo) => {
+    const formData = [];
+
+    for (const key in sectionInfo) {
+      if (sectionInfo[key] !== '') {
+        formData.push(
+          <Form.Group className="mb-3" key={`info-${key}`}>
+            <Form.Label>{key}</Form.Label>
+            <Form.Control type="text" value={sectionInfo[key]} readOnly />
+          </Form.Group>
+        );
+      }
+    }
+
+    return formData;
+  };
+
+  const handleInfoBoxes = (employeeInfo) => {
+    const rows = [];
+    let cols = [];
+
+    for (const section in employeeInfo) {
+      const sectionData = handlePersonalInformation(employeeInfo[section]);
+      if (sectionData.length === 0) continue;
+
+      cols.push(
+        <Col key={`col-${section}`}>
+          <h5>{section}</h5>
+          <div className="br mb-3"></div>
+          <Form>{sectionData}</Form>
+        </Col>
+      );
+      if (cols.length === 3) {
+        rows.push(<Row key={`row-${rows.length}`} className='mb-3'>{cols}</Row>);
+        cols = [];
+      }
+    }
+    if (cols.length > 0) {
+      rows.push(<Row key={`row-${rows.length}`}>{cols}</Row>);
+    }
+
+    return rows;
+  };
+
   return (
     <Container>
-      <Row>
-        <Col>
-          <h5><i className="fa-solid fa-address-card"></i> Basic info</h5>
-          <div className='br mb-3' ></div>
-          <Form>
-            <Form.Group className="mb-3" controlId="firstName">
-              <Form.Label>First Name</Form.Label>
-              <Form.Control type="text" value={'Andrei'} readOnly/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="firstName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control type="text" value={'Rachieru'} readOnly/>
-            </Form.Group>
-          </Form>
-        </Col>
-        <Col>
-          <h5><i className="fa-solid fa-address-book"></i> Contact info</h5>
-          <div className='br mb-3' ></div>
-          <Form>
-            <Form.Group className="mb-3" controlId="firstName">
-              <Form.Label>Work Email</Form.Label>
-              <Form.Control type="text" value={'andrei.rachieru@yahoo.com'} readOnly/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="firstName">
-              <Form.Label>Phone Number</Form.Label>
-              <Form.Control type="text" value={'0753830028'} readOnly/>
-            </Form.Group>
-          </Form>
-        </Col>
-        <Col>
-          <h5><i className="fa-solid fa-map-location"></i> Address info</h5>
-          <div className='br mb-3' ></div>
-          <Form>
-            <Form.Group className="mb-3" controlId="firstName">
-              <Form.Label>Home Address</Form.Label>
-              <Form.Control type="text" value={'Str. One, Nr. 1'} readOnly/>
-            </Form.Group>
-          </Form>
-        </Col>
-      </Row>
+      {handleInfoBoxes(employeeInformation['EMP-1001'])}
     </Container>
-  )
+  );
 }
 
-export default PersonalInfoBox
+export default PersonalInfoBox;

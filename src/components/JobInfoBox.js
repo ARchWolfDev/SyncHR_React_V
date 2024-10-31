@@ -1,10 +1,10 @@
 import React from 'react'
-import { Container, Row, Col, Form } from 'react-bootstrap'
+import { Container, Row, Col, Form, Table } from 'react-bootstrap'
 
 function JobInfoBox() {
   return (
     <Container>
-      <Row>
+      <Row className='mb-3'>
         <Col>
           <h5><i className="fa-solid fa-address-card"></i> Employee info</h5>
           <div className='br mb-3' ></div>
@@ -44,6 +44,34 @@ function JobInfoBox() {
               <Form.Control type="text" value={'andrei.rachieru@yahoo.com'} readOnly/>
             </Form.Group>
           </Form>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <h5><i className="fa-solid fa-user-shield"></i> Contract Information</h5>
+          <div className='br mb-3' ></div>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>ID</th>
+                <th>Start Date</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>CTR-0001</td>
+                <td>25/10/2024</td>
+                <td>ARch Dev Solution Employee Contract</td>
+                <td>Active</td>
+                <td>Download</td>
+              </tr>
+            </tbody>
+          </Table>
         </Col>
       </Row>
     </Container>

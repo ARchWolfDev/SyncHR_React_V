@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Col, Container, Nav, Row} from 'react-bootstrap'
-import SettingsModal_Tab0 from './SettingsModal_Tab0'
-import SettingsModal_Tab1 from './SettingsModal_Tab1'
-import SettingsModal_Tab2 from './SettingsModal_Tab2'
+import SettingsModalTab0 from './SettingsModalTab0'
+import SettingsModalTab1 from './SettingsModalTab1'
+import SettingsModalTab2 from './SettingsModalTab2'
 
-function SettingsModal() {
+function SettingsModal(props) {
 
     const [navTab, setNavTab] = useState(0)
 
@@ -13,7 +13,7 @@ function SettingsModal() {
     }
 
     const renderTabContent = () => {
-        const tabContentArray = [<SettingsModal_Tab0/>, <SettingsModal_Tab1/>, <SettingsModal_Tab2/>]
+        const tabContentArray = [<SettingsModalTab0 setValue={props.setValue}/>, <SettingsModalTab1 />, <SettingsModalTab2 />]
         return tabContentArray.at(navTab)
     }
 
