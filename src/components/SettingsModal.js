@@ -21,7 +21,7 @@ function SettingsModal(props) {
     <Container>
         <Row>
             <Col style={{maxWidth: '25%', borderRight: '0.5px solid #ddd'}}>
-                <Nav variant="pills" defaultActiveKey="link-0" className="flex-column">
+                <Nav variant="pills" defaultActiveKey="link-0" className="flex-column column-nav-flex">
                     <Nav.Item>
                         <Nav.Link eventKey="link-0" onClick={() => handleNavTab(0)}><i className="fa-solid fa-user"></i> Personal info</Nav.Link>
                     </Nav.Item>

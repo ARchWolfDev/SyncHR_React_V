@@ -59,7 +59,7 @@ function Calendar() {
     const renderDays = () => {
         const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         return (
-            <div className='row'>
+            <div className='row days-header'>
                 {days.map(day => (
                     <div className="col day" key={day}>{day}</div>
                 ))}

@@ -42,8 +42,8 @@ function Sidebar() {
           <h1 className="s-logo">S.</h1>
         </div>
         <div className={`${offCanvan ? 'offcanvan show' : ''} sidebar-items`}>
-          <Link to={'/home'} className={location.pathname === '/home'? 'active-nav-item': ''}><i class="fa-solid fa-house"></i> Home</Link>
-          <Link to={'/admin/'} className={location.pathname.startsWith('/admin')? 'active-nav-item': ''}>Admin</Link>
+          <Link to={'/home'} className={location.pathname === '/home'? 'active-nav-item': ''}><i className="fa-solid fa-house"></i>Home</Link>
+          <Link to={'/admin/'} className={location.pathname.startsWith('/admin')? 'active-nav-item': ''}><i className="fa-solid fa-star"></i>Admin</Link>
           <div 
             role='button' 
             onClick={handleTimeOffButton} 

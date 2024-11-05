@@ -29,7 +29,6 @@ function PageContent({children}) {
       <Sidebar />
       <Header />
       <div className='content'>
-        {/* <LoadingPage active={loading} /> */}
         {children}
       </div>
       <Footer />

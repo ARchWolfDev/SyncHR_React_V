@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Form, ListGroup } from 'react-bootstrap';
+import { Form, ListGroup, Image } from 'react-bootstrap';
+import avatar from '../avatars/dog.png'
+import { Link } from 'react-router-dom';
 
 function EmployeesBox() {
   const [searchTerm, setSearchTerm] = useState(''); // State to track the search input
@@ -47,7 +49,7 @@ function EmployeesBox() {
       <ListGroup className='scrollable-list'>
         {filteredEmployees.length > 0 ? (
           filteredEmployees.map((employee, index) => (
-            <ListGroup.Item key={index}>{employee}</ListGroup.Item>
+            <ListGroup.Item key={index}><Link style={{textDecoration: 'none', color: 'black'}} to={'/profile/ZW1wLTEwMDAx'}><Image src={avatar} roundedCircle style={{width: '30px'}}/> {employee}</Link></ListGroup.Item>
           ))
         ) : (
           <ListGroup.Item>No employees found</ListGroup.Item>

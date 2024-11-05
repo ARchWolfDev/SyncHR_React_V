@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Container, Form, Row } from 'react-bootstrap'
+import { useModalContext } from './ModalProvider'
+// import { isEqual } from 'lodash';
 
 function RequestNewTimeOffModal() {
 
@@ -18,10 +20,19 @@ function RequestNewTimeOffModal() {
         }
     }
 
+    const {setValue} = useModalContext()
     const [activeTab, setActiveTab] = useState('')
     const [fromDate, setFromDate] = useState('')
     const [toDate, setToDate] = useState('')
     const [amount, setAmount] = useState(0)
+    const [comment, setComment] = useState('')
+    const [timeOffRequest, setTimeOffRequest] = useState({
+        categoryType: '',
+        startDate: '',
+        endDate: '',
+        amountDays: '',
+        comment: ''
+    })
 
     const handleClick = (activeTab) => {
         setActiveTab(activeTab)
@@ -59,6 +70,9 @@ function RequestNewTimeOffModal() {
             calculateBusinessDays(fromDate, e.target.value)
         }
     }
+    const handleComment = (e) => {
+        setComment(e.target.value)
+    }
 
     const renderLeaveList = () => {
         const elementList = []
@@ -77,6 +91,20 @@ function RequestNewTimeOffModal() {
         }
         return elementList
     }
+
+    useEffect(() => {
+        setTimeOffRequest({
+            categoryType: activeTab,
+            startDate: fromDate,
+            endDate: toDate,
+            amountDays: amount,
+            comment: comment
+        })
+    }, [activeTab, fromDate, toDate, amount, comment])
+
+    useEffect(() => {
+        setValue(timeOffRequest);
+    }, [timeOffRequest, setValue]);
 
     const renderRequestBody = () => {
         if (activeTab === '') {
@@ -115,7 +143,7 @@ function RequestNewTimeOffModal() {
                         <Row>
                             <Form.Group>
                                 <Form.Label>Comment</Form.Label>
-                                <Form.Control as="textarea" ></Form.Control>
+                                <Form.Control as="textarea" value={comment} onChange={handleComment}></Form.Control>
                             </Form.Group>
                         </Row>
                     </Form>
