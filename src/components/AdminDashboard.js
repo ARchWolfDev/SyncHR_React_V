@@ -68,9 +68,7 @@ function AdminDashboard() {
             <div className="fw-bold">{timeOffList[key].createdBy}</div>
             {timeOffList[key].startDate} - {timeOffList[key].endDate}
           </div>
-          <Badge bg="warning" pill>
-          <i className="fa-solid fa-hourglass-start fa-fade"></i>
-          </Badge>
+          <Badge bg="warning" pill><i className="fa-solid fa-hourglass-start fa-fade"></i></Badge>
         </ListGroup.Item>
       )
     }
@@ -238,7 +236,7 @@ function AdminDashboard() {
         <Col className='box col-3'>
           <h5>Timeoff Requests</h5>
           <ListGroup as="ol" numbered>
-            {renderTimeOffRequestList()}
+            {renderTimeOffRequestList() || "No new Requests"}
           </ListGroup>
         </Col>
         <Col className='box'>
