@@ -94,7 +94,7 @@ function HomeComponent() {
             {renderInfoBox()}
           </Col>
           <Col className='search-box'>
-            <Nav variant="pills" defaultActiveKey="employeesBox"  style={{justifyContent: 'center'}}>
+            <Nav fill variant="pills" defaultActiveKey="employeesBox" style={{marginLeft: '10px'}}>
               <Nav.Item>
                 <Nav.Link eventKey='employeesBox' onClick={() => handleNavTabs2(0)}><i className="fa-solid fa-users"></i> Employees</Nav.Link>
               </Nav.Item>

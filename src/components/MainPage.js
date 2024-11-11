@@ -6,7 +6,7 @@ function MainPage() {
     <div>
         <h5>Welcome</h5>
         <nav>
-            <Link to={'/home'}>Go to app</Link>
+            <Link to={'/login'}>Go to app</Link>
         </nav>
     </div>
   )

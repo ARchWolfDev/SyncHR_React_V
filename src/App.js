@@ -17,6 +17,7 @@ import AdminTasks from './components/AdminTasks';
 import AdminRoles from './components/AdminRoles';
 import AdminProfiles from './components/AdminProfiles';
 import ProfileComponent from './components/ProfileComponent';
+import LoginPage from './components/LoginPage';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <div className="App">
               <Routes location={location}>
                 <Route path="/" element={<MainPage />} />
+                <Route path='login' element={<LoginPage />} />
                 <Route path="home" element={<PageContent><HomeComponent /></PageContent>} />
                 <Route path="admin" element={<PageContent><AdminComponent /></PageContent>}>
                   <Route index element={<Navigate to="dashboard" />} />

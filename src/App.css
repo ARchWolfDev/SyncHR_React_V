@@ -186,8 +186,9 @@ body { background: #ddd!important; }
 .logo {
   padding: 12% 15%; 
   font-family: 'Open Sans', sans-serif;
+  font-weight: bold; color:#5E17EB;
 }
-.logo h1 { font-weight: bold; color:#5E17EB; transition: width 0.5s;}
+.logo h1 {transition: width 0.5s;}
 .s-logo { display: none; font-size: 2.5rem; text-align: center;}
 .sidebar-items {padding: 0 5%; color: white;}
 .sidebar-items div {padding: 8%;border-radius: 0.375rem;}
@@ -417,4 +418,51 @@ body { background: #ddd!important; }
 .modal-left-side-info {
   max-width: 30%!important;
   border-right: 0.5px solid #ddd;
+}
+/* Login Page */
+.login-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at 50% 50%, rgba(94, 23, 235, 1) 0%, rgba(0, 0, 0, 1) 53%);
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
+  min-height: 100%;
+  overflow: hidden;
+  transition: background-position 2s ease;
+}
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+.animate-background {
+  animation: moveBackground 2s ease forwards;
+}
+.nav-bar-links {
+  font-weight: 900;
+}
+.nav-bar-links a {
+  margin: 1rem;
+  color: #5e17eb;
+}
+.nav-bar-links a:hover {
+  color: #4200c7;
+}
+.login-box {
+  margin: auto;
+  background-color: white;
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  padding: 30px;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

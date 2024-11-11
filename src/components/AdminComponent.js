@@ -15,6 +15,7 @@ function AdminComponent() {
     if (checked) {
       return (
         <Col className={`col-3`}>
+          <Col className='m0-box mb-3'>Pending Action</Col>
           <Col className='m0-box mb-3'>current month completed timesheets</Col>
           <Col className='m0-box mb-3'>employee next time off or current off</Col>
           <Col className='m0-box mb-3'>tickets </Col>

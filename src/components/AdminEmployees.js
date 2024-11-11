@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Form, Row} from 'react-bootstrap';
 import TableComponent from './TableComponent';
 
 function AdminEmployees() {
@@ -33,27 +33,22 @@ function AdminEmployees() {
 
   const groupByData = () => {
     if (groupBy !== 'all') {
-      const x = employees.reduce((result, employee) => {
-        const department = employee[groupBy]
-        if (!result[department]) {
-            result[department] = []
+      const groupedData = employees.reduce((result, employee) => {
+        const groupKey = employee[groupBy]
+        if (!result[groupKey]) {
+            result[groupKey] = []
         }
-        result[department].push(employee)
+        result[groupKey].push(employee)
 
         return result
       }, {})
-      var tables = []
-      for (const key in x) {
-        tables.push(
-          <Col className='box'>
-            <h5>{key}</h5>
-            <TableComponent tableData={x[key]} />
-          </Col>
-        )
-      }
-      return tables
+      return Object.keys(groupedData).map((key) =>
+        (<Col key={key} className='box'>
+          <h5>{key}</h5>
+          <TableComponent tableData={groupedData[key]} />
+        </Col>)
+      )
     } else {
-      console.log(employees)
       return (
         <Col className='box'>
           <TableComponent tableData={employees} />
@@ -71,6 +66,7 @@ function AdminEmployees() {
             <option value="all">All</option>
             <option value="Department">Department</option>
             <option value="Role">Role</option>
+            <option value="Hired Date">Hired Date</option>
           </Form.Select>
         </Col>
       </Row>

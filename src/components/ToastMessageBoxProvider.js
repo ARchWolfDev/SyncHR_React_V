@@ -10,15 +10,16 @@ export const ToastMessageBoxProvider = ({children}) => {
     const [icon, setIcon] = useState(<i className="fa-solid fa-circle-check"></i>)
     const [message, setMessage] = useState('')
 
-    const handleToastMessageBox = (x) => {
-        if (x === 'error') {
+    const handleToastMessageBox = (error, text) => {
+      // set error as 'true' or 'false' if exist, set message that you want to appear on the Toast Box
+        if (error) {
             setError('error')
             setIcon(<i className="fa-solid fa-triangle-exclamation"></i>)
-            setMessage(' Uoopsy, Something is Wrong!')
+            if (text) {setMessage(text)} else {setMessage(' Uoopsy, Something is Wrong!')}
         } else {
             setError('')
             setIcon(<i className="fa-solid fa-circle-check"></i>)
-            setMessage(" Yayyy, Your Request has been submited successfully")
+            if (text) {setMessage(text)} else {setMessage(" Yayyy, Your Request has been submited successfully")}
         }
         setVisibility(true)
         if (visibility === false) {
