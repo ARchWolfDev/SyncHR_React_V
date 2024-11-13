@@ -3,7 +3,13 @@ import { Container, Navbar, Nav, Form, Button } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useToastContext } from './ToastMessageBoxProvider'
 
+
 function LoginPage() {
+
+    const user = {
+        emailAddress: 'Andrei.Rachieru@arch-dev.com',
+        password: 'Fuckth3systemE@'
+    }
 
     const [emailAddress, setEmailAddress] = useState('')
     const [password, setPassword] = useState('')
@@ -30,7 +36,9 @@ function LoginPage() {
     <div className={`login-page ${backgroundAnimation?'animate-background': ''}`}>
       <Navbar expand="lg"  style={{padding: '30px'}}>
         <Container>
-            <Navbar.Brand><h1 className='logo'>Sync.</h1></Navbar.Brand>
+            <Navbar.Brand>
+                {/* <img src={logo}></img> */}
+                <h1 className='logo'>Sync.</h1></Navbar.Brand>
             <Nav className='nav-bar-links'>  
                 <Nav.Link ><Link to={'/'} style={{textDecoration: 'none'}}>Home</Link></Nav.Link>
                 <Nav.Link >Arch DEV</Nav.Link>

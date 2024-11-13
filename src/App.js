@@ -18,6 +18,9 @@ import AdminRoles from './components/AdminRoles';
 import AdminProfiles from './components/AdminProfiles';
 import ProfileComponent from './components/ProfileComponent';
 import LoginPage from './components/LoginPage';
+import AdminDepartments from './components/AdminDepartments';
+import AdminTeams from './components/AdminTeams';
+import DepartmentComponent from './components/DepartmentComponent';
 
 function App() {
 
@@ -34,7 +37,11 @@ function App() {
                 <Route path="admin" element={<PageContent><AdminComponent /></PageContent>}>
                   <Route index element={<Navigate to="dashboard" />} />
                   <Route path="dashboard" element={<AdminDashboard />} />
-                  <Route path='employees' element={<AdminEmployees />} />
+                  <Route path="teams" element={<AdminTeams />}>
+                    <Route index element={<Navigate to="employees" />} />
+                    <Route path='employees' element={<AdminEmployees />} />
+                    <Route path='departments' element={<AdminDepartments />} />
+                  </Route>
                   <Route path='requests' element={<AdminRequests />} />
                   <Route path='projects' element={<AdminProjects />} />
                   <Route path='tasks' element={<AdminTasks />} />
@@ -42,6 +49,7 @@ function App() {
                   <Route path='profiles' element={<AdminProfiles />} />
                 </Route>
                 <Route path='profile/:id' element={<PageContent><ProfileComponent/></PageContent>} />
+                <Route path='department/:id' element={<PageContent><DepartmentComponent /></PageContent>} />
               </Routes>
           </div>
       </ModalProvider>

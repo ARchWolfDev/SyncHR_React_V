@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useOutletContext } from 'react-router-dom';
-import { Row, Col, Form, ListGroup, Badge } from 'react-bootstrap'
+// import { useOutletContext } from 'react-router-dom';
+import { Row, Col, ListGroup, Badge } from 'react-bootstrap'
 import { BarChart } from '@mui/x-charts/BarChart';
 import { LineChart, PieChart, Gauge, gaugeClasses } from '@mui/x-charts';
 
@@ -11,7 +11,7 @@ function AdminDashboard() {
   const [approvedInfo, setApprovedInfo] = useState(false)
   const [rejectedInfo, setRejectedInfo] = useState(false)
   const [informationContent, setinformationContent] = useState('')
-  const { checked, toggleChecked } = useOutletContext();
+  // const { checked, toggleChecked } = useOutletContext();
 
   const handleInformationContent = (content) => {
     if (content === 'pending') {
@@ -93,14 +93,14 @@ function AdminDashboard() {
       <Row>
         <Col className='box'>
           <h5>Admin Dashboard Settings</h5>
-          <Form>
+          {/* <Form>
             <Form.Check
               type='switch'
               checked={checked}
               onChange={toggleChecked}
               label={`${checked? 'Hide': 'Show'} right sidebar`}
             />
-          </Form>
+          </Form> */}
         </Col>
       </Row>
       <Row>

@@ -7,6 +7,8 @@ import HistoryTimeOffModal from './HistoryTimeOffModal';
 import RequestNewRequestModal from './RequestNewRequestModal';
 import HistoryRequestModal from './HistoryRequestModal';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../Logo_v2_bg_black.png'
+import { CloseButton } from 'react-bootstrap';
 
 function Sidebar() {
 
@@ -38,10 +40,18 @@ function Sidebar() {
     <div>
       <div className="sidebar">
         <div className="logo">
-          <h1 className="l-logo">Sync.</h1>
-          <h1 className="s-logo">S.</h1>
+          <img alt='Logo' src={logo}></img>
+          <h1 className="text-logo">Sync.</h1>
+          <button
+            className="menu-button btn btn-dark ms-auto"
+            onClick={triggerOffCanvan}
+            style={{ display: 'none' }}
+          >
+            <i className="fa-solid fa-bars"></i>
+          </button>
         </div>
         <div className={`${offCanvan ? 'offcanvan show' : ''} sidebar-items`}>
+          <CloseButton onClick={triggerOffCanvan} className='mb-3 offcanvan-close'/>
           <Link to={'/home'} className={location.pathname === '/home'? 'active-nav-item': ''}><i className="fa-solid fa-house"></i>Home</Link>
           <Link to={'/admin/'} className={location.pathname.startsWith('/admin')? 'active-nav-item': ''}><i className="fa-solid fa-star"></i>Admin</Link>
           <div 
@@ -69,21 +79,7 @@ function Sidebar() {
           <div role='button' onClick={handleClick}>Documents</div>
           <div role='button' onClick={handleClick}>Internal Documentation</div>
           <Link to={'/'}>Log Out</Link>
-          <div
-            typeof="button"
-            onClick={triggerOffCanvan}
-            style={{ display: 'none' }}
-          >
-            Exit
-          </div>
         </div>
-        <button
-          className="menu-button btn btn-dark"
-          onClick={triggerOffCanvan}
-          style={{ display: 'none' }}
-        >
-          <i className="fa-solid fa-bars"></i>
-        </button>
       </div>
     </div>
   );

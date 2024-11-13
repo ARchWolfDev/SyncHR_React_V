@@ -145,7 +145,10 @@ function Calendar() {
         while (cells.length < 7) {
             cells.push(<div className="col cell cell-empty" key={`empty-end-${cells.length}`}></div>);
         }
-        rows.push(<div className="row calendar-row" key="end">{cells}</div>);
+        const hasNonEmptyCell = cells.some(cell => !cell.props.className.includes("cell-empty"));
+        if (hasNonEmptyCell) {
+            rows.push(<div className="row calendar-row" key="end">{cells}</div>);
+        }
 
         return <div>{rows}</div>;
     }
