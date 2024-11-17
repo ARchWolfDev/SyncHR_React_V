@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Form, ListGroup } from 'react-bootstrap'
+import Avatar from './Avatar';
 
 function DepartmentsBox() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -35,7 +36,9 @@ function DepartmentsBox() {
         <ListGroup className='scrollable-list'>
             {filteredDepartments.length > 0 ? (
                 filteredDepartments.map((department, index) => (
-                    <ListGroup.Item key={index}>{department}</ListGroup.Item>
+                    <ListGroup.Item key={index} style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                        <Avatar name={department} size={30} style={{marginRight: 10}} type='departments'/> {department}
+                    </ListGroup.Item>
                 ))
             ): (<ListGroup.Item>No department found</ListGroup.Item>)
             }

@@ -1,7 +1,7 @@
 import React from 'react'
-import avatar from '../avatars/dog.png'
 import { useModalContext } from './ModalProvider'
 import AvatarEditor from './AvatarEditor';
+import Avatar from './Avatar';
 
 function Header() {
 
@@ -17,7 +17,7 @@ function Header() {
         <p>Role</p>
       </div>
       <div className='avatar-container'>
-        <img src={avatar} alt='Avatar' className='avatar'></img>
+        <Avatar name='Andrei Rachieru' size={100} />
         <span onClick={handleAvatarEdit} className='edit-icon badge rounded-pill text-bg-danger'><i id="editIcon" className="fa-solid fa-wand-magic-sparkles"></i></span>
       </div>
     </div>

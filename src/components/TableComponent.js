@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Table, Form, Dropdown, Button} from 'react-bootstrap'
 import _ from 'lodash'
 
@@ -14,6 +14,11 @@ function TableComponent({tableData}) {
     // let filter = _.filter(tableData, (employee) => 
     //     (employee.Department === 'IT' || employee.Department === 'Sales') && employee['Last Name'].toLowerCase().includes('al')
     // )
+    useEffect(() => {
+        setFilteredData(tableData);
+        setCheckedRows(Array(tableData.length).fill(false));
+        setSelectAll(false);
+      }, [tableData]);
 
     const handleFilterColumn = (e) => {
         setFilterColumn(e.target.value)
@@ -67,6 +72,17 @@ function TableComponent({tableData}) {
         return null
     }
 
+    const capitalizeHeader = (keyWord) => {
+        if (keyWord === 'id' || keyWord === 'Id') {
+            return keyWord.toUpperCase()
+        }
+        const firstLetter = keyWord.at(0)
+        const firstLetterCap = firstLetter.toUpperCase()
+        const remainingLetters = keyWord.slice(1)
+
+        return firstLetterCap + remainingLetters
+    }
+
   return (
     <>
         <Table hover>
@@ -75,7 +91,7 @@ function TableComponent({tableData}) {
                 {Object.keys(tableData[0]).map((key) => (
                 <th key={key} >
                     <div style={{display: 'flex', justifyContent: "space-between", alignItems: "center"}}>
-                        <h6 type="button" onClick={() => sortRequest(key)} style={{margin: 0}}>{key} {renderArrow(key)}</h6>
+                        <h6 type="button" onClick={() => sortRequest(key)} style={{margin: 0}}>{capitalizeHeader(key)} {renderArrow(key)}</h6>
                         <Dropdown style={{display: 'inline-block', lineHeight: 'inherit'}}>
                             <Dropdown.Toggle size="sm" variant="light" style={{backgroundColor: "transparent"}}></Dropdown.Toggle>
                             <Dropdown.Menu style={{padding: 10}}>

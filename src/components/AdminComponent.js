@@ -1,9 +1,25 @@
 import React, { useState } from 'react'
-import { Col, Container, Nav, Row, Form, Button, Dropdown, ListGroup, ListGroupItem, ProgressBar, Image } from 'react-bootstrap';
+import { Col, Container, Nav, Row, Form, Button, Dropdown} from 'react-bootstrap';
 import {Link ,Outlet, useLocation } from 'react-router-dom';
-import avatar from '../avatars/dog.png'
+// import avatar from '../avatars/dog.png'
+import AdminQuickBar from './AdminQuickBar';
 
 function AdminComponent() {
+
+  const employees = [
+    'John Doe',
+    'Jane Smith',
+    'Alice Johnson',
+    'Michael Brown',
+    'Emily Davis',
+    'William Johnson',
+    'Patricia Lee',
+    'David Anderson',
+    'Linda White',
+    'Robert Harris',
+    'Jessica Turner',
+    'Thomas Thompson'
+  ];
 
   const urlLocation = useLocation().pathname
   const [checked, setChecked] = useState(true)
@@ -14,81 +30,7 @@ function AdminComponent() {
 
   const renderRightSideInformation = () => {
     if (checked) {
-      return (
-        <Col className={`col-3`}>
-          <Col className='m0-box mb-3'>
-            add quick action
-            <h5><i className="fa-solid fa-hourglass-start"></i> Pending action</h5>
-            <div className='br mb-3'></div>
-            <div className='white-box m0-box mb-3' >Timesheet requests <strong style={{float: 'right'}}>0</strong></div>
-            
-            <div className='white-box m0-box mb-3' >Timeoff requests <strong style={{float: 'right'}}>0</strong></div>
-            <div className='white-box m0-box mb-3' >Tickets requests <strong style={{float: 'right'}}>0</strong></div>
-          </Col>
-          <Col className='m0-box mb-3 department-box'>
-            <h5><i className="fa-solid fa-sitemap"></i> Sales</h5>
-            <h6>Responsible: Alice Smith</h6>
-            <h6>Employees in: 5</h6>
-            <i className="pin fa-solid fa-thumbtack" style={{color: 'red', opacity: 1}}></i>
-          </Col>
-          <Col className='m0-box mb-3'>
-            <h5><i className="fa-regular fa-calendar-check"></i> Timesheet current month</h5>
-            <div className='br mb-3'></div>
-            <ListGroup>
-              <ListGroupItem>
-                <Row>
-                  <Col className='col-2'>
-                    <Image src={avatar} roundedCircle style={{width: '50px'}}/>
-                  </Col>
-                  <Col>
-                    <h5>Andrei Rachieru</h5>
-                    <ProgressBar now={50}></ProgressBar>
-                  </Col>
-                </Row>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Row>
-                  <Col className='col-2'>
-                    <Image src={avatar} roundedCircle style={{width: '50px'}}/>
-                  </Col>
-                  <Col>
-                    <h5>Andrei Rachieru</h5>
-                    <ProgressBar now={50}></ProgressBar>
-                  </Col>
-                </Row>
-              </ListGroupItem>
-            </ListGroup>
-          </Col>
-          <Col className='m0-box mb-3'>
-            <h5><i className="fa-solid fa-business-time"></i> Timeoff planned</h5>
-            <div className='br mb-3'></div>
-            <ListGroup>
-              <ListGroupItem>
-                <Row>
-                  <Col className='col-2'>
-                    <Image src={avatar} roundedCircle style={{width: '50px'}}/>
-                  </Col>
-                  <Col>
-                    <h5>Andrei Rachieru</h5>
-                    <h6 className='mb-0'>Off Today</h6>
-                  </Col>
-                </Row>
-              </ListGroupItem>
-              <ListGroupItem>
-                <Row>
-                  <Col className='col-2'>
-                    <Image src={avatar} roundedCircle style={{width: '50px'}}/>
-                  </Col>
-                  <Col>
-                    <h5>Andrei Rachieru</h5>
-                    <h6 className='mb-0'>Off planned in 3 days</h6>
-                  </Col>
-                </Row>
-              </ListGroupItem>
-            </ListGroup>
-          </Col>
-        </Col>
-      )
+      return (<AdminQuickBar employees={employees}/>)
     }
   }
 

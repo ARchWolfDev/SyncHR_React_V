@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Col, Form, Row} from 'react-bootstrap';
 import TableComponent from './TableComponent';
+import Avatar from './Avatar';
 
 function AdminEmployees() {
   const [employees] = useState([
@@ -44,7 +45,10 @@ function AdminEmployees() {
       }, {})
       return Object.keys(groupedData).map((key) =>
         (<Col key={key} className='box'>
-          <h5>{key}</h5>
+          <div className='avatar-text-div'>
+            <Avatar type='departments' size={40} name={key} />
+            <h5>{key}</h5>
+          </div>
           <TableComponent tableData={groupedData[key]} />
         </Col>)
       )

@@ -21,6 +21,7 @@ import LoginPage from './components/LoginPage';
 import AdminDepartments from './components/AdminDepartments';
 import AdminTeams from './components/AdminTeams';
 import DepartmentComponent from './components/DepartmentComponent';
+import TestComponent from './components/TestComponent';
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
                 </Route>
                 <Route path='profile/:id' element={<PageContent><ProfileComponent/></PageContent>} />
                 <Route path='department/:id' element={<PageContent><DepartmentComponent /></PageContent>} />
+                <Route path='testPage'element={<TestComponent/>}></Route>
               </Routes>
           </div>
       </ModalProvider>

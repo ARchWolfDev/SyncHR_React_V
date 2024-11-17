@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Col, Container, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import Avatar from './Avatar'
 
 function AdminDepartments() {
 
@@ -80,6 +81,7 @@ function AdminDepartments() {
             setDepartmentsPinned(departments.filter(dep => newPinned.includes(dep.id)));
             return newPinned;
         });
+        console.log(departmentsPinned)
     };
 
     const renderTooltip = (props) => (
@@ -91,7 +93,10 @@ function AdminDepartments() {
     const renderDepartmentsList = () => {
         return departments.map((dep) => (
             <Col key={dep.id} className='box department-box' style={{minWidth: '25%', position:'relative'}}>
-                <h5 type='button' onClick={() => handleDepartment(dep.name)}><i className="fa-solid fa-sitemap"></i> {dep.name}</h5>
+                <div className='mb-2 avatar-text-div'>
+                    <Avatar type='departments' name={dep.name} size={30} />
+                    <h5 style={{marginLeft: 10, marginBottom: 0}} type='button' onClick={() => handleDepartment(dep.name)}> {dep.name}</h5>
+                </div>
                 <h6>Responsible: {dep.responsible.name}</h6>
                 <h6>Employees in: {dep.employees.length}</h6>
                 <OverlayTrigger placement='top' overlay={renderTooltip} delay={{show: 500}}>
