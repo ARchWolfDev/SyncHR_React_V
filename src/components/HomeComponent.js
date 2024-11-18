@@ -42,7 +42,7 @@ function HomeComponent() {
   return (
     <Container style={{maxWidth: '100%', 'padding': 0}}>
         <Row>
-          <Col lg={9}><Calendar /></Col>
+          <Col lg={9} className='calendar-col'><Calendar /></Col>
           <Col style={{paddingRight: 0}} className='traker'>
             <div className='box' style={{textAlign: 'center', height: '45%'}}>
               <h5>Timesheet completed</h5>

@@ -88,6 +88,7 @@
   .sidebar {
     width: 60px!important;
     transition: width 0.5s!important;
+    z-index: 999;
   }
   .sidebar:hover { width: 200px!important; }
   .sidebar:hover .sidebar-items { display: block;}
@@ -107,6 +108,9 @@
   .traker {
     display: inline-flex;
     padding: 0px!important;
+  }
+  .calendar-col { 
+    margin-bottom: 1rem;
   }
   .box {
     display: grid!important; 
@@ -168,10 +172,11 @@
     align-items: center!important;
   }
   .traker .box {width: 100%;}
-  .nav-pills { justify-content: space-evenly!important;}
+  .nav-pills { justify-content: space-evenly!important; margin-bottom: 1rem!important;}
   .toast-message-box {
     right: 10px!important;
-    left: 10px
+    left: 10px;
+    text-align: center;
   }
   .info-box .col {min-width: 100%!important;}
   .calendar-modal-emplyee-info {display: none!important;}
@@ -431,6 +436,8 @@ body { background: #ddd!important; }
   z-index: 1500;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   visibility: hidden;
+  display: flex;
+  align-items: center;
 }
 .toast-message {
   margin: 0;
