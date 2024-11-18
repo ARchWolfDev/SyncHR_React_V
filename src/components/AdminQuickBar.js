@@ -4,7 +4,7 @@ import { ListGroup, ListGroupItem, ProgressBar, Col } from 'react-bootstrap';
 
 function AdminQuickBar({employees}) {
   return (
-    <Col className={`col-3`}>
+    <Col className={`col-3 admin-quick-bar`}>
         <Col className='m0-box mb-3'>
         add quick action
         <h5><i className="fa-solid fa-hourglass-start"></i> Pending action</h5>

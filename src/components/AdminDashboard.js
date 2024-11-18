@@ -103,7 +103,7 @@ function AdminDashboard() {
           </Form> */}
         </Col>
       </Row>
-      <Row>
+      <Row className='dashboard-row'>
         <Col className='col-3'>
           <div className='m0-box mb-3' >
             <h5>All employees</h5>
@@ -164,7 +164,7 @@ function AdminDashboard() {
         />
         </Col>
       </Row>
-      <Row>
+      <Row className='dashboard-row'>
         <Col className='box'>
         <h5>Employees number over the year</h5>
           <LineChart 
@@ -182,8 +182,8 @@ function AdminDashboard() {
           />
         </Col>
       </Row>
-      <Row>
-        <Col className='box'>
+      <Row className='dashboard-row'>
+        <Col className='box justify-items-center'>
             <h5>Timesheet Requests</h5>
             <Row className='timesheet-status-box-row'>
               <Col type='button' onClick={() => handleInformationContent('pending')} className='box' style={{backgroundColor: '#ffeb99'}}><h6>Pending <strong style={{float: 'right'}}>0</strong></h6></Col>
@@ -193,7 +193,7 @@ function AdminDashboard() {
             {renderTimeSheetStatusInformation()}
         </Col>
       </Row>
-      <Row>
+      <Row className='dashboard-row'>
         <Col className='box'>
           <h5>Timesheet completed by Employees</h5>
           <BarChart
@@ -232,7 +232,7 @@ function AdminDashboard() {
           />
         </Col>
       </Row>
-      <Row>
+      <Row className='dashboard-row'>
         <Col className='box col-3'>
           <h5>Timeoff Requests</h5>
           <ListGroup as="ol" numbered>

@@ -175,6 +175,12 @@
   }
   .info-box .col {min-width: 100%!important;}
   .calendar-modal-emplyee-info {display: none!important;}
+  .admin-quick-bar {display: none;}
+  .dashboard-row {flex-direction: column;}
+  .dashboard-row div {width: 100%!important;}
+  .dashboard-row h5 {text-align: center;}
+  .box {margin: 0 !important; margin-bottom: 1rem!important; border-radius: 0!important;}
+  .justify-items-center {justify-items: center!important;}
 }
 /* ========================================================================= */
 body { background: #ddd!important; }
