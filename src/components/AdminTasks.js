@@ -194,7 +194,7 @@ function AdminTasks() {
               onClick={handleDeleteTasks}>Delete ({checkedTasks.length})</Button>
             <Form style={{marginTop: 10, display: checkedForm?'flex':'none'}} onSubmit={handleAddTask}>
               <Form.Control size='sm' style={{marginRight: 10}} placeholder='Task Name + Enter' onChange={handleTaskInputChange} value={newTaskName} ref={inputRef}></Form.Control>
-              <Button variant="primary" size="sm" type='submit'>Add</Button>
+              <Button size="sm" type='submit'>Add</Button>
             </Form>
             <TableComponent tableData={activeList.tasks} onCheckedRowsChange={handleCheckedRowsChange}/>
           </div>

@@ -44,6 +44,7 @@ function AdminEmployees() {
         return result
       }, {})
       return Object.keys(groupedData).map((key) =>
+        //TODO: Correct the overflow 
         (<Col key={key} className='box' style={{overflow: 'auto'}}>
           <div className='avatar-text-div'>
             <Avatar type='departments' size={40} name={key} />

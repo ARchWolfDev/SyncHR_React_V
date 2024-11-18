@@ -1,116 +1,135 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Button, Col, Container, Form, Row, ToggleButton } from 'react-bootstrap'
+import TableComponent from './TableComponent'
 
 function AdminRoles() {
 
-  const roles = [
+  const departments = [
     {
-        id: 1,
-        name: "Manager",
-        employees: [{ id: 1, name: "Alice Smith", department: "Sales", email: "Alice.Smith@arch-dev.com" }]
+      id: 1,
+      name: "Engineering",
+      roles: [
+        { id: 1, name: "Software Engineer" },
+        { id: 2, name: "Quality Assurance Engineer" },
+        { id: 3, name: "DevOps Specialist" },
+        { id: 4, name: "Technical Lead" },
+        { id: 5, name: "Backend Developer" }
+      ]
     },
     {
-        id: 2,
-        name: "Developer",
-        employees: [{ id: 2, name: "Bob Johnson", department: "IT", email: "Bob.Johnson@arch-dev.com" }]
+      id: 2,
+      name: "Marketing",
+      roles: [
+        { id: 6, name: "Content Strategist" },
+        { id: 7, name: "Social Media Manager" },
+        { id: 8, name: "SEO Specialist" },
+        { id: 9, name: "Brand Manager" }
+      ]
     },
     {
-        id: 3,
-        name: "Analyst",
-        employees: [{ id: 3, name: "Carol Williams", department: "Finance", email: "Carol.Williams@arch-dev.com" }]
+      id: 3,
+      name: "Human Resources",
+      roles: [
+        { id: 10, name: "Recruiter" },
+        { id: 11, name: "HR Manager" },
+        { id: 12, name: "Compensation and Benefits Specialist" },
+        { id: 13, name: "Employee Relations Officer" }
+      ]
     },
     {
-        id: 4,
-        name: "Designer",
-        employees: [{ id: 4, name: "David Brown", department: "Marketing", email: "David.Brown@arch-dev.com" }]
+      id: 4,
+      name: "Finance",
+      roles: [
+        { id: 14, name: "Accountant" },
+        { id: 15, name: "Financial Analyst" },
+        { id: 16, name: "Payroll Specialist" },
+        { id: 17, name: "Tax Consultant" },
+        { id: 18, name: "Treasury Manager" }
+      ]
     },
     {
-        id: 5,
-        name: "HR Specialist",
-        employees: [{ id: 5, name: "Emma Davis", department: "Human Resources", email: "Emma.Davis@arch-dev.com" }]
-    },
-    {
-        id: 6,
-        name: "Support Engineer",
-        employees: [{ id: 6, name: "Frank Miller", department: "IT", email: "Frank.Miller@arch-dev.com" }]
-    },
-    {
-        id: 7,
-        name: "Sales Representative",
-        employees: [{ id: 7, name: "Grace Wilson", department: "Sales", email: "Grace.Wilson@arch-dev.com" }]
-    },
-    {
-        id: 8,
-        name: "Marketing Specialist",
-        employees: [{ id: 8, name: "Henry Moore", department: "Marketing", email: "Henry.Moore@arch-dev.com" }]
-    },
-    {
-        id: 9,
-        name: "Data Scientist",
-        employees: [{ id: 9, name: "Ivy Taylor", department: "Finance", email: "Ivy.Taylor@arch-dev.com" }]
-    },
-    {
-        id: 10,
-        name: "Sales Associate",
-        employees: [{ id: 10, name: "Jack Anderson", department: "Sales", email: "Jack.Anderson@arch-dev.com" }]
-    },
-    {
-        id: 11,
-        name: "HR Manager",
-        employees: [{ id: 11, name: "Kate Thomas", department: "Human Resources", email: "Kate.Thomas@arch-dev.com" }]
-    },
-    {
-        id: 12,
-        name: "Accountant",
-        employees: [{ id: 12, name: "Liam Taylor", department: "Finance", email: "Liam.Taylor@arch-dev.com" }]
-    },
-    {
-        id: 13,
-        name: "Sales Executive",
-        employees: [{ id: 13, name: "Mia Walker", department: "Sales", email: "Mia.Walker@arch-dev.com" }]
-    },
-    {
-        id: 14,
-        name: "IT Manager",
-        employees: [{ id: 14, name: "Noah Allen", department: "IT", email: "Noah.Allen@arch-dev.com" }]
-    },
-    {
-        id: 15,
-        name: "Marketing Director",
-        employees: [{ id: 15, name: "Olivia King", department: "Marketing", email: "Olivia.King@arch-dev.com" }]
-    },
-    {
-        id: 16,
-        name: "Recruiter",
-        employees: [{ id: 16, name: "Paul Scott", department: "Human Resources", email: "Paul.Scott@arch-dev.com" }]
-    },
-    {
-        id: 17,
-        name: "Sales Manager",
-        employees: [{ id: 17, name: "Quinn Young", department: "Sales", email: "Quinn.Young@arch-dev.com" }]
-    },
-    {
-        id: 18,
-        name: "Financial Analyst",
-        employees: [{ id: 18, name: "Rachel Adams", department: "Finance", email: "Rachel.Adams@arch-dev.com" }]
-    },
-    {
-        id: 19,
-        name: "IT Support",
-        employees: [{ id: 19, name: "Sam Clark", department: "IT", email: "Sam.Clark@arch-dev.com" }]
-    },
-    {
-        id: 20,
-        name: "Marketing Coordinator",
-        employees: [{ id: 20, name: "Tina Evans", department: "Marketing", email: "Tina.Evans@arch-dev.com" }]
+      id: 5,
+      name: "Operations",
+      roles: [
+        { id: 19, name: "Operations Manager" },
+        { id: 20, name: "Logistics Coordinator" },
+        { id: 21, name: "Supply Chain Analyst" },
+        { id: 22, name: "Facilities Manager" }
+      ]
     }
-];
+  ];
 
-console.log(roles)
+  const [departmentList, setDepartmentList] = useState(departments)
+  const [activeList, setActiveList] = useState(departments[0])
+  const [checked, setChecked] = useState(false)
+  const [newRole, setNewRole] = useState('')
+
+  const handleToggleButton = () => {setChecked(!checked)}
+  const handleAddForm = (e) => {
+    e.preventDefault()
+    const newRoleToAdd = {
+      id: activeList.roles.length + 1,
+      name: newRole
+    }
+    const updatedDepartmentList = departmentList.map(department => 
+      department.id === activeList.id?
+      {...department, roles: [...department.roles, newRoleToAdd]}:
+      {department}
+    )
+    setDepartmentList(updatedDepartmentList)
+    const updatedActiveList = updatedDepartmentList.find((department) => department.id === activeList.id)
+    setActiveList(updatedActiveList)
+
+  }
+
+  const renderAddForm = () => {
+    if (checked) {
+      return (
+        <Form style={{marginTop: 10, display: checked?'flex':'none'}} onSubmit={handleAddForm}>
+          <Form.Control size='sm' style={{marginRight: 10}} onChange={(e) => setNewRole(e.target.value)}/>
+          <Button size='sm' type='submit'>Add</Button>
+        </Form>
+      )
+    }
+  }
 
   return (
-    <div>
-      admin roles
-    </div>
+    <Container>
+      <Row>
+        <Col className='col-3 col-white-box'>
+          <div className='m0-box list-white-box'>
+            {
+              departments.map((department, index) => (
+                <div
+                  key={index}
+                  type='button'
+                  className={`white-box m0-box mb-3 ${activeList.id === department.id?'active-white-box': ''}`}
+                  onClick={() => setActiveList(department)}
+                >
+                  {department.name}
+                </div>
+              ))
+            }
+          </div>
+        </Col>
+        <Col>
+          <div className='m0-box'>
+            <h5>{activeList.name}</h5>
+            <div className='br mb-3'></div>
+            <ToggleButton 
+              variant='primary' 
+              size='sm' 
+              type='checkbox' 
+              checked={checked} 
+              onClick={() => handleToggleButton()}
+            >Add new
+            </ToggleButton>
+            {renderAddForm()}
+            <TableComponent tableData={activeList.roles} />
+          </div>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 
