@@ -181,6 +181,7 @@
   .dashboard-row h5 {text-align: center;}
   .box {margin: 0 !important; margin-bottom: 1rem!important; border-radius: 0!important;}
   .justify-items-center {justify-items: center!important;}
+  .sm-view-row {flex-direction: column;}
 }
 /* ========================================================================= */
 body { background: #ddd!important; }
