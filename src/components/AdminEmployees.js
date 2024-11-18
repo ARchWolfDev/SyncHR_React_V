@@ -44,7 +44,7 @@ function AdminEmployees() {
         return result
       }, {})
       return Object.keys(groupedData).map((key) =>
-        (<Col key={key} className='box'>
+        (<Col key={key} className='box' style={{overflow: 'auto'}}>
           <div className='avatar-text-div'>
             <Avatar type='departments' size={40} name={key} />
             <h5>{key}</h5>
@@ -54,7 +54,7 @@ function AdminEmployees() {
       )
     } else {
       return (
-        <Col className='box'>
+        <Col className='box' style={{overflow: 'auto'}}>
           <TableComponent tableData={employees} />
         </Col>
       )
@@ -74,7 +74,7 @@ function AdminEmployees() {
           </Form.Select>
         </Col>
       </Row>
-      <Row>
+      <Row className='sm-view-row'>
           {groupByData()}
       </Row>
     </>
