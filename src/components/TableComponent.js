@@ -3,7 +3,7 @@ import { Table, Form, Dropdown, Button} from 'react-bootstrap'
 import _ from 'lodash'
 
 
-function TableComponent({tableData}) {
+function TableComponent({tableData, onCheckedRowsChange}) {
 
     const [selectAll, setSelectAll] = useState(false)
     const [checkedRows, setCheckedRows] = useState(Array(tableData.length).fill(false))
@@ -11,9 +11,6 @@ function TableComponent({tableData}) {
     const [filterColumn, setFilterColumn] = useState('')
     const [filteredData, setFilteredData] = useState(tableData)
 
-    // let filter = _.filter(tableData, (employee) => 
-    //     (employee.Department === 'IT' || employee.Department === 'Sales') && employee['Last Name'].toLowerCase().includes('al')
-    // )
     useEffect(() => {
         setFilteredData(tableData);
         setCheckedRows(Array(tableData.length).fill(false));
@@ -31,9 +28,17 @@ function TableComponent({tableData}) {
     }
   
     const handleSelectAll = () => {
-      setSelectAll(!selectAll)
-      setCheckedRows(Array(tableData.length).fill(!selectAll))
-    }
+        const newSelectAll = !selectAll;
+        setSelectAll(newSelectAll);
+
+        const updatedCheckedRows = Array(tableData.length).fill(newSelectAll);
+        setCheckedRows(updatedCheckedRows);
+    
+        const checkedIndices = newSelectAll
+          ? tableData.map((_, idx) => idx)
+          : [];
+        onCheckedRowsChange(checkedIndices);
+      };
   
     const handleRowCheck = (index) => {
       const updatedCheckedRows = [...checkedRows]
@@ -42,6 +47,9 @@ function TableComponent({tableData}) {
   
       const allChecked = updatedCheckedRows.every((checked) => checked)
       setSelectAll(allChecked)
+
+      const checkedIndices = updatedCheckedRows.map((checked, idx) => (checked? idx: null)).filter((idx) => idx !== null)
+      onCheckedRowsChange(checkedIndices)
     }
   
     const renderTableBody = (data) => {

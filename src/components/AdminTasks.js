@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { useModalContext } from './ModalProvider';
 import { Container, Row, Col, Button, Form, ToggleButton } from 'react-bootstrap'
 import TableComponent from './TableComponent';
 
@@ -65,14 +66,21 @@ function AdminTasks() {
   const [activeList, setActiveList] = useState(taskLists[0])
   const [checkedForm, setCheckedForm] = useState(false)
   const [newTaskName, setNewTask] = useState('')
-  const inputRef = useRef(null);
+  const [checkedTasks, setCheckedTasks] = useState([])
+  const {handleShowModal} = useModalContext();
+  const inputRef = useRef(null)
+
+  const handleCheckedRowsChange = (checkedIndices) => {
+    const checkedTasksData = checkedIndices.map((idx) => activeList.tasks[idx])
+    setCheckedTasks(checkedTasksData)
+  }
 
   const handleTasksListButton = (listId) => {
     const listSelected = taskLists.filter((task) => task.id === listId)
-    console.log(listSelected[0].tasks)
     if (listSelected) {
       setActiveList(listSelected[0])
     }
+    setCheckedTasks([])
   }
   const handleAddTaskRadioButton = () => {
     setCheckedForm((prevChecked) => !prevChecked)
@@ -85,30 +93,52 @@ function AdminTasks() {
   }
   const handleAddTask = (e) => {
     e.preventDefault();
-    if (newTaskName.trim() === '') return;
+    if (newTaskName.trim() === '') return
   
     const updatedTaskLists = taskLists.map((list) => {
       if (list.id === activeList.id) {
         const newTask = {
           id: list.tasks.length + 1,
           name: newTaskName
-        };
+        }
         return {
           ...list,
           tasks: [...list.tasks, newTask]
-        };
+        }
       }
-      return list;
-    });
+      return list
+    })
   
-    setTasksList(updatedTaskLists);
+    setTasksList(updatedTaskLists)
   
-    const updatedActiveList = updatedTaskLists.find((list) => list.id === activeList.id);
-    setActiveList(updatedActiveList);
-    setNewTask('');
-  };
+    const updatedActiveList = updatedTaskLists.find((list) => list.id === activeList.id)
+    setActiveList(updatedActiveList)
+    setNewTask('')
+  }
 
-  console.log(taskLists)
+  const handleDeleteTasks = () => {
+    const updatedTaskLists = taskLists.map((list) => {
+      if (list.id === activeList.id) {
+        const remainingTasks = list.tasks.filter(
+          (task) => !checkedTasks.some((checkedTask) => checkedTask.id === task.id)
+        )
+        return { ...list, tasks: remainingTasks }
+      }
+      return list
+    })
+
+    setTasksList(updatedTaskLists)
+
+    const updatedActiveList = updatedTaskLists.find((list) => list.id === activeList.id)
+    setActiveList(updatedActiveList)
+    setCheckedTasks([])
+  }
+
+  // TODO: Create an Edit Tasks Modal Component (Rename, Move (eventualy)) 
+  const handleEditTask = () => {
+    console.log(checkedTasks)
+    handleShowModal("Edit tasks")
+  }
 
   return (
     <Container>
@@ -116,7 +146,14 @@ function AdminTasks() {
         <Col className='col-3'>
           <div className='m0-box '>
             {taskLists.map((list) => (
-              <div key={list.id} type='button' className={`white-box box ${activeList.id === list.id?'active-white-box': ''}`} onClick={() => handleTasksListButton(list.id)}>{list.name}</div>
+              <div 
+                key={list.id} 
+                type='button' 
+                className={`white-box box ${activeList.id === list.id?'active-white-box': ''}`} 
+                onClick={() => handleTasksListButton(list.id)}
+              >
+                {list.name}
+              </div>
             ))}
           </div>
         </Col>
@@ -136,14 +173,29 @@ function AdminTasks() {
               </Col>
             </Row>
             <div className='br mb-3'></div>
-            <ToggleButton variant='primary' size='sm' type='checkbox' checked={checkedForm} onClick={handleAddTaskRadioButton}>Add Task</ToggleButton>
-            <Button variant="outline-secondary" size="sm" style={{marginLeft: 5}}>Edit</Button>
-            <Button variant="danger" size="sm" style={{float: 'right'}}>Delete</Button>
+            <ToggleButton 
+              variant='primary' 
+              size='sm' 
+              type='checkbox' 
+              checked={checkedForm} 
+              onClick={handleAddTaskRadioButton}>Add Task</ToggleButton>
+            <Button 
+              variant="outline-secondary" 
+              disabled={checkedTasks <= 0} 
+              size="sm" 
+              style={{marginLeft: 5}} 
+              onClick={() => handleEditTask()}>Edit ({checkedTasks.length})</Button>
+            <Button 
+              variant="danger" 
+              disabled={checkedTasks <= 0} 
+              size="sm" 
+              style={{float: 'right'}} 
+              onClick={handleDeleteTasks}>Delete ({checkedTasks.length})</Button>
             <Form style={{marginTop: 10, display: checkedForm?'flex':'none'}} onSubmit={handleAddTask}>
               <Form.Control size='sm' style={{marginRight: 10}} placeholder='Task Name + Enter' onChange={handleTaskInputChange} value={newTaskName} ref={inputRef}></Form.Control>
               <Button variant="primary" size="sm" type='submit'>Add</Button>
             </Form>
-            <TableComponent tableData={activeList.tasks}/>
+            <TableComponent tableData={activeList.tasks} onCheckedRowsChange={handleCheckedRowsChange}/>
           </div>
         </Col>
       </Row>
