@@ -143,13 +143,13 @@ function AdminTasks() {
   return (
     <Container>
       <Row>
-        <Col className='col-3'>
-          <div className='m0-box '>
+        <Col className='col-3 col-white-box'>
+          <div className='m0-box list-white-box'>
             {taskLists.map((list) => (
               <div 
                 key={list.id} 
                 type='button' 
-                className={`white-box box ${activeList.id === list.id?'active-white-box': ''}`} 
+                className={`white-box m0-box mb-3 ${activeList.id === list.id?'active-white-box': ''}`} 
                 onClick={() => handleTasksListButton(list.id)}
               >
                 {list.name}
@@ -165,6 +165,7 @@ function AdminTasks() {
               <Col>
               <p>Projects: SyncHR</p>
               <p>Tasks no: {activeList.tasks.length}</p>
+              <p>Most used by: Development Team</p>
               </Col>
               <Col className='col-4'>
                 <span>Created by: <strong>{activeList.createdBy}</strong></span>

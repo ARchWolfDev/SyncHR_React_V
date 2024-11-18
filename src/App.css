@@ -2,7 +2,7 @@
   --bs-link-color: #000000!important;
   --bs-link-hover-color: #4200c7!important; 
 }
-::-webkit-scrollbar {width: 6px;}
+::-webkit-scrollbar {width: 6px; height: 6px;}
 ::-webkit-scrollbar-track {background: #2e2e2e;}
 ::-webkit-scrollbar-thumb {
   background: black;
@@ -113,6 +113,18 @@
     height: auto!important;
     width: 48%;
     /* margin-top: 20px!important; */
+  }
+  .col-white-box {
+    width: 100%!important;
+  }
+  .list-white-box {
+    flex-direction: row!important;
+    margin-bottom: 1rem;
+    justify-content: space-around;
+    overflow: auto;
+  }
+  .list-white-box .white-box {
+    margin: 0!important;
   }
   .mb-3 { margin-bottom: 0px!important;}
   .col-lg-9 { width: 100%!important;}
@@ -345,7 +357,10 @@ body { background: #ddd!important; }
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: solid 1px #5E17EB!important;
 }
-
+.list-white-box {
+  display: flex;
+  flex-direction: column;
+}
 .timesheet-status-box-row .box:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: box-shadow 0.3s ease-in-out;

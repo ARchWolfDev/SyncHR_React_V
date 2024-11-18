@@ -141,4 +141,8 @@ function TableComponent({tableData, onCheckedRowsChange}) {
   )
 }
 
+TableComponent.defaultProps = {
+    onCheckedRowsChange: () => {}
+}
+
 export default TableComponent
