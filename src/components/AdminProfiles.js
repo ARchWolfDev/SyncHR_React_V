@@ -37,12 +37,12 @@ function AdminProfiles() {
   return (
     <Container className='grid-profile-container'>
         {employees.map((employee) => (
-          <div className='profile-item' type='button' onClick={() => handleProfile(employee.ID)}>
-            <div className='avatar-profile-container'>
-              <Avatar size={150} name={`${employee['First Name']} ${employee['Last Name']}`}/>
-              <div className='overlay'></div>
+          <div className='profile-item m0-box' type='button' onClick={() => handleProfile(employee.ID)}>
+            <Avatar size={80} name={`${employee['First Name']} ${employee['Last Name']}`}/>
+            <div style={{marginLeft: 10}}>
+              <h5>{`${employee['First Name']} ${employee['Last Name']}`}</h5>
+              <h6>{employee.Role}</h6>
             </div>
-            <h5>{`${employee['First Name']} ${employee['Last Name']}`}</h5>
           </div>
         ))}
     </Container>
