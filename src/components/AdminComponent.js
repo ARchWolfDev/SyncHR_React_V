@@ -41,7 +41,7 @@ function AdminComponent() {
             <Nav variant="pills align-items-center" defaultActiveKey='link-1'>
               <Nav.Item><Link to='dashboard' className={`nav-link ${urlLocation.endsWith('dashboard')?'active':''}`}>Dashboard</Link></Nav.Item>
               <Nav.Item><Link to='teams' className={`nav-link ${urlLocation.endsWith('employees') || urlLocation.endsWith('departments')?'active':''}`}>Teams</Link></Nav.Item>
-              <Nav.Item><Link to='requests' className={`nav-link ${urlLocation.endsWith('requests')?'active':''}`}>Requests</Link></Nav.Item>
+              <Nav.Item><Link to='requests' className={`nav-link ${urlLocation.endsWith('timesheets') || urlLocation.endsWith('timeoffs') || urlLocation.endsWith('tickets')?'active':''}`}>Requests</Link></Nav.Item>
               <Nav.Item><Link to='projects' className={`nav-link ${urlLocation.endsWith('projects')?'active':''}`}>Projects</Link></Nav.Item>
               <Nav.Item><Link to='tasks' className={`nav-link ${urlLocation.endsWith('tasks')?'active':''}`}>Tasks</Link></Nav.Item>
               <Nav.Item><Link to='roles' className={`nav-link ${urlLocation.endsWith('roles')?'active':''}`}>Roles</Link></Nav.Item>

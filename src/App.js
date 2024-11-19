@@ -22,6 +22,9 @@ import AdminDepartments from './components/AdminDepartments';
 import AdminTeams from './components/AdminTeams';
 import DepartmentComponent from './components/DepartmentComponent';
 import TestComponent from './components/TestComponent';
+import AdminRequestsTimesheets from './components/AdminRequestsTimesheets';
+import AdminRequestsTimeOff from './components/AdminRequestsTimeOff';
+import AdminRequestsTickets from './components/AdminRequestsTickets';
 
 function App() {
 
@@ -43,7 +46,12 @@ function App() {
                     <Route path='employees' element={<AdminEmployees />} />
                     <Route path='departments' element={<AdminDepartments />} />
                   </Route>
-                  <Route path='requests' element={<AdminRequests />} />
+                  <Route path='requests' element={<AdminRequests />}>
+                    <Route index element={<Navigate to='timesheets'/>} />
+                    <Route path='timesheets' element={<AdminRequestsTimesheets />} />
+                    <Route path='timeoffs' element={<AdminRequestsTimeOff />} />
+                    <Route path='tickets' element={<AdminRequestsTickets />} />
+                  </Route>
                   <Route path='projects' element={<AdminProjects />} />
                   <Route path='tasks' element={<AdminTasks />} />
                   <Route path='roles' element={<AdminRoles />} />

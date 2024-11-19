@@ -186,9 +186,9 @@ function AdminDashboard() {
         <Col className='box justify-items-center'>
             <h5>Timesheet Requests</h5>
             <Row className='timesheet-status-box-row'>
-              <Col type='button' onClick={() => handleInformationContent('pending')} className='box' style={{backgroundColor: '#ffeb99'}}><h6>Pending <strong style={{float: 'right'}}>0</strong></h6></Col>
-              <Col type='button' onClick={() => handleInformationContent('approved')} className='box' style={{backgroundColor: '#99ff99'}}><h6>Approved <strong style={{float: 'right'}}>0</strong></h6></Col>
-              <Col type='button' onClick={() => handleInformationContent('rejected')} className='box' style={{backgroundColor: '#ff9999'}}><h6>Rejected <strong style={{float: 'right'}}>0</strong></h6></Col>
+              <Col type='button' onClick={() => handleInformationContent('pending')} className='box hover-box' style={{backgroundColor: '#ffeb99'}}><h6>Pending <strong style={{float: 'right'}}>0</strong></h6></Col>
+              <Col type='button' onClick={() => handleInformationContent('approved')} className='box hover-box' style={{backgroundColor: '#99ff99'}}><h6>Approved <strong style={{float: 'right'}}>0</strong></h6></Col>
+              <Col type='button' onClick={() => handleInformationContent('rejected')} className='box hover-box' style={{backgroundColor: '#ff9999'}}><h6>Rejected <strong style={{float: 'right'}}>0</strong></h6></Col>
             </Row>
             {renderTimeSheetStatusInformation()}
         </Col>

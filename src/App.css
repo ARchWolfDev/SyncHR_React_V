@@ -379,13 +379,12 @@ body { background: #ddd!important; }
   display: flex;
   flex-direction: column;
 }
-.timesheet-status-box-row .box:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.timesheet-status-box-row .box{
+  box-shadow: none;
   transition: box-shadow 0.3s ease-in-out;
 }
-.hover-box .box:hover{
+.hover-box:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  transition: box-shadow 0.3s ease-in-out;
 }
 .department-box {
   position: relative;
