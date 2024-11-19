@@ -549,6 +549,21 @@ body { background: #ddd!important; }
 .profile-item:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.request-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.request-data {
+  height: 0px;
+  overflow: auto;
+  margin-top: 0px;
+  transition: height 0.3s ease-in-out;
+}
+.show-data {
+  height: 300px;
+  margin-top: 20px;
+}
 /* Login Page */
 .login-page {
   position: fixed;
