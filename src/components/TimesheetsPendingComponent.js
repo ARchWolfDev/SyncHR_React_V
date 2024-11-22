@@ -60,11 +60,11 @@ function TimesheetsPendingComponent() {
                         <Avatar size={50} name={request.userName}/>
                         <h5>{request.userName}</h5>
                     </div>
-                    <ProgressBar style={{width: '40%'}}>
-                        <ProgressBar variant="success" now={35} key={1} />
+                    {/* <ProgressBar style={{width: '40%'}}>
+                        <ProgressBar variant="success" now={0} key={1} />
                         <ProgressBar variant="warning" now={20} key={2} />
-                        <ProgressBar variant="danger" now={10} key={3} />
-                    </ProgressBar>
+                        <ProgressBar variant="danger" now={0} key={3} />
+                    </ProgressBar> */}
                     <div style={{display: 'flex', alignItems: 'center'}}>
                         <div>
                             <h5>Requests: {request.timesheetRequests.length}</h5>
@@ -74,7 +74,7 @@ function TimesheetsPendingComponent() {
                     </div>
                 </div>
                 <div className={`request-data ${expandedRows[request.userId]?'show-data':''}`}>
-                    <Button size='sm'>View Tasks ({checkedRows.length})</Button>
+                    <Button size='sm'>View Tasks</Button>
                     <div style={{float: 'right'}}>
                         <Button size='sm' variant='success' onClick={() => handleSelectedRows(2)} style={{marginRight: 10}}>Approve ({checkedRows.length})</Button>
                         <Button size='sm' variant='danger' onClick={() => handleSelectedRows(3)}>Reject ({checkedRows.length})</Button>

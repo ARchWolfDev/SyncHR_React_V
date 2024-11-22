@@ -143,7 +143,7 @@ function AdminTasks() {
     <Container>
       <Row>
         <Col className='col-3 col-white-box'>
-          <div className='m0-box list-white-box'>
+          <div className='m0-box list-white-box scroll-snap-list'>
             {taskLists.map((list) => (
               <div 
                 key={list.id} 

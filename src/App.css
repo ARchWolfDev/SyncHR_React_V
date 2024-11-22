@@ -194,6 +194,17 @@
   .grid-profile-container {
     grid-template-columns: auto!important;
   }
+  .scroll-snap-list {
+    scroll-snap-type: both mandatory!important;
+    gap: 20px;
+    scrollbar-width: none;
+  }
+  .scroll-snap-list .white-box {
+    min-width: 100%!important;
+    text-align: center;
+    scroll-snap-align: center;
+    scroll-margin: 20px;
+  }
 }
 /* ========================================================================= */
 body { background: #ddd!important; }
@@ -570,6 +581,9 @@ body { background: #ddd!important; }
 .show-data {
   height: 300px;
   margin-top: 20px;
+}
+.scroll-snap-list {
+  scroll-snap-type: none;
 }
 /* Login Page */
 .login-page {
