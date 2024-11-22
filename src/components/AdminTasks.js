@@ -71,8 +71,7 @@ function AdminTasks() {
   const inputRef = useRef(null)
 
   const handleCheckedRowsChange = (checkedIndices) => {
-    const checkedTasksData = checkedIndices.map((idx) => activeList.tasks[idx])
-    setCheckedTasks(checkedTasksData)
+    setCheckedTasks(checkedIndices)
   }
 
   const handleTasksListButton = (listId) => {

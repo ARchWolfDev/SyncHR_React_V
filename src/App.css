@@ -115,7 +115,7 @@
   .box {
     display: grid!important; 
     height: auto!important;
-    width: 48%;
+    /* width: 48%; */
     /* margin-top: 20px!important; */
   }
   .col-white-box {
@@ -389,6 +389,11 @@ body { background: #ddd!important; }
 }
 .department-box {
   position: relative;
+  box-shadow: none;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.department-box:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .pin {
   opacity: 0;
@@ -415,6 +420,7 @@ body { background: #ddd!important; }
 .info-box {
   margin: 0px;
   margin-top: 1rem;
+  min-height: 300px;
 }
 .info-box2 {
   margin: 0px 0px 0px 10px;
@@ -559,7 +565,7 @@ body { background: #ddd!important; }
   height: 0px;
   overflow: auto;
   margin-top: 0px;
-  transition: height 0.3s ease-in-out;
+  transition: height 0.3s ease-in-out, margin-top 0.3s ease-in-out;;
 }
 .show-data {
   height: 300px;

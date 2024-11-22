@@ -37,6 +37,18 @@ function AdminDashboard() {
     }
   }
 
+  const data = [40, 27, 18, 34]
+  const currentDate = new Date()
+  const currentMonth = currentDate.getMonth()
+  const list = []
+
+  for (var i = (currentMonth - 3); i <= currentMonth; i++){
+    const date = new Date(2024, i)
+    const year = date.getFullYear()
+    const month = date.toLocaleString('default', {month : 'short'})
+    list.push(`${month} ${year}`)
+  }
+
   const renderTimeOffRequestList = () => {
     const timeOffList = {
       Req1: {
@@ -167,18 +179,10 @@ function AdminDashboard() {
       <Row className='dashboard-row'>
         <Col className='box'>
         <h5>Employees number over the year</h5>
-          <LineChart 
-            xAxis={[{
-              data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], label: 'Month of 2024'}]}
-            series={[
-              {
-                data: [5, 7, 13, 25, 23, 19, 28],
-                color: 'green',
-                label: 'Employees'
-              },
-            ]}
-            height={270}
-            grid={{ vertical: true, horizontal: true }}
+          <LineChart
+            height={270} 
+            series={[{data: data, label: 'Employees count', color: 'green'}]}
+            xAxis={[{scaleType: 'point', data: list}]}
           />
         </Col>
       </Row>

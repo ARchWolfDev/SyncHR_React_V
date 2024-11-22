@@ -34,22 +34,22 @@ function TableComponent({tableData, onCheckedRowsChange}) {
         const updatedCheckedRows = Array(tableData.length).fill(newSelectAll);
         setCheckedRows(updatedCheckedRows);
     
-        const checkedIndices = newSelectAll
-          ? tableData.map((_, idx) => idx)
+        const checkedRowsData = newSelectAll
+          ? tableData
           : [];
-        onCheckedRowsChange(checkedIndices);
+        onCheckedRowsChange(checkedRowsData);
       };
   
     const handleRowCheck = (index) => {
-      const updatedCheckedRows = [...checkedRows]
-      updatedCheckedRows[index] = !updatedCheckedRows[index]
-      setCheckedRows(updatedCheckedRows)
-  
-      const allChecked = updatedCheckedRows.every((checked) => checked)
-      setSelectAll(allChecked)
+        const updatedCheckedRows = [...checkedRows]
+        updatedCheckedRows[index] = !updatedCheckedRows[index]
+        setCheckedRows(updatedCheckedRows)
+    
+        const allChecked = updatedCheckedRows.every((checked) => checked)
+        setSelectAll(allChecked)
 
-      const checkedIndices = updatedCheckedRows.map((checked, idx) => (checked? idx: null)).filter((idx) => idx !== null)
-      onCheckedRowsChange(checkedIndices)
+        const checkedRowsData = tableData.filter((_, idx) => updatedCheckedRows[idx]);
+        onCheckedRowsChange(checkedRowsData);
     }
   
     const renderTableBody = (data) => {

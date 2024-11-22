@@ -15,7 +15,7 @@ function AdminRequests() {
               <Link to={'timesheets'} className={`nav-link ${location.endsWith('timesheets')?'active':''}`}>Timesheet</Link>
             </Nav.Item>
             <Nav.Item>
-              <Link to={'timeoffs'} className={`nav-link ${location.endsWith('timeoffs')?'active':''}`}>Timeoff</Link>
+              <Link to={'timeoffs'} className={`nav-link ${location.endsWith('timeoffs')?'active':''}`}>Time Off</Link>
             </Nav.Item>
             <Nav.Item>
               <Link to={'tickets'} className={`nav-link ${location.endsWith('tickets')?'active':''}`}>Tickets</Link>

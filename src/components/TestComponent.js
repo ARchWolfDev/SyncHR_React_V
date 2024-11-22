@@ -1,8 +1,9 @@
 import React from 'react'
 import avatar from '../avatars/dog.png'
 import Avatar from './Avatar'
-import { Form } from 'react-bootstrap'
+// import { Form } from 'react-bootstrap'
 import Select from 'react-select'
+import { LineChart, lineElementClasses } from '@mui/x-charts'
 
 function TestComponent() {
 
@@ -40,6 +41,21 @@ function TestComponent() {
     }),
   };
 
+  const uData = [40, 27, 18, 34];
+  const currentDate = new Date()
+  const currentMonth = currentDate.getMonth()
+  const list = []
+
+  for (var i = (currentMonth - 3); i <= currentMonth; i++){
+    const date = new Date(2024, i)
+    const year = date.getFullYear()
+    const month = date.toLocaleString('default', {month : 'short'})
+    list.push(`${month} ${year}`)
+  }
+  console.log(list)
+
+
+
   return (
     <div style={{margin: 50}}>
         avatar with initials 
@@ -50,6 +66,12 @@ function TestComponent() {
           options={option}
           isMulti
           styles={customStyles}
+        />
+        <LineChart
+          width={500}
+          height={300} 
+          series={[{data: uData, label: 'Employees count', color: 'red'}]}
+          xAxis={[{scaleType: 'point', data: list}]}
         />
     </div>
   )

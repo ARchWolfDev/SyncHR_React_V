@@ -109,7 +109,7 @@ function AdminDepartments() {
   return (
     <Container>
         <Row><Col className='box'><h5>Settings</h5></Col></Row>
-        <Row className='hover-box sm-view-row'>
+        <Row className='sm-view-row'>
             {renderDepartmentsList()}
         </Row>
     </Container>
