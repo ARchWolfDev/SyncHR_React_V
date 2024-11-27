@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'
 import Avatar from './Avatar';
+import WhiteBoxList from './WhiteBoxList';
 
 function ProfileComponent() {
 
   const {id} = useParams();
+  const tabLists = [
+    {id: 1, name: 'Basic Information'},
+    {id: 2, name: 'Timesheets'},
+    {id: 3, name: 'Time Off'},
+    {id: 4, name: 'Documents'},
+  ]
+
+  const [tabData, setTabData] = useState([])
 
 // <Avatar size={150} />
   return (
@@ -22,14 +31,9 @@ function ProfileComponent() {
             </Col>
           </Row>
           <Row>
-            <Col className='box col-3'>
-              <div className='white-box m0-box mb-3 active-white-box'>Basic Information</div>
-              <div className='white-box m0-box mb-3'>Timesheet</div>
-              <div className='white-box m0-box mb-3'>Timeoff</div>
-              <div className='white-box m0-box mb-3'>Documents</div>
-            </Col>
+            <WhiteBoxList listData={tabLists} returnData={setTabData}/>
             <Col>
-              <div className='m0-box'>Content</div>
+              <div className='m0-box'>{tabData.name}</div>
             </Col>
           </Row>
         </Col>

@@ -1,10 +1,13 @@
 import React from 'react'
+import { Col, Row } from 'react-bootstrap'
 
 function AdminRequestsTimeOff() {
   return (
-    <div>
-      Timeoff
-    </div>
+    <Row>
+      <Col className='box' style={{textAlign: 'center'}}>
+        <h6>No data to share</h6>
+      </Col>
+    </Row>
   )
 }
 

@@ -61,7 +61,14 @@ function TestComponent() {
         avatar with initials 
         <Avatar name='Andrei Rachieru' size={100}/>
         avatar with src 
-        <Avatar src={avatar} name='Andrei Rachieru' size={100} />
+        <div>
+          <div>
+            <Avatar src={avatar} name='Andrei Rachieru' size={100} />
+          </div>
+          <div>
+            <Avatar src={avatar} name='Andrei Rachieru' size={100} />
+          </div>
+        </div>
         <Select 
           options={option}
           isMulti

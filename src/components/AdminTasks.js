@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useModalContext } from './ModalProvider';
-import { Container, Row, Col, Button, Form, ToggleButton } from 'react-bootstrap'
+import { Container, Row, Col, Button, Form, ToggleButton, Badge } from 'react-bootstrap'
 import TableComponent from './TableComponent';
 
 function AdminTasks() {
@@ -162,7 +162,7 @@ function AdminTasks() {
             <div className='br mb-3'></div>
             <Row>
               <Col>
-              <p>Projects: SyncHR</p>
+              <p>Projects: <Badge bg="primary">SyncHR</Badge><Badge bg="success">Internal</Badge></p>
               <p>Tasks no: {activeList.tasks.length}</p>
               <p>Most used by: Development Team</p>
               </Col>

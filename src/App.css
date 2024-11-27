@@ -579,8 +579,19 @@ body { background: #ddd!important; }
   transition: height 0.3s ease-in-out, margin-top 0.3s ease-in-out;;
 }
 .show-data {
-  height: 300px;
+  height: 400px;
   margin-top: 20px;
+}
+.date-header {
+  display: flex;
+}
+.date-table{
+  height: 0px;
+  overflow: auto;
+  transition: height 0.3s ease-in-out;
+}
+.show-data-table {
+  height: auto;
 }
 .scroll-snap-list {
   scroll-snap-type: none;
