@@ -421,6 +421,7 @@ body { background: #ddd!important; }
 } 
 .no-margin {margin: 0px!important}
 .no-padding {padding: 0px!important;}
+.float-r {float: right!important;}
 .max-width-25 {max-width: 25%!important;}
 .width-50 {width: 50%!important;}
 .width-75 {width: 75%!important;}

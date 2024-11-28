@@ -15,11 +15,11 @@ export const ToastMessageBoxProvider = ({children}) => {
         if (error) {
             setError('error')
             setIcon(<i className="fa-solid fa-triangle-exclamation"></i>)
-            if (text) {setMessage(text)} else {setMessage(' Uoopsy, Something is Wrong!')}
+            if (text) {setMessage(text)} else {setMessage('Something is Wrong!')}
         } else {
             setError('')
             setIcon(<i className="fa-solid fa-circle-check"></i>)
-            if (text) {setMessage(text)} else {setMessage(" Yayyy, Your Request has been submited successfully")}
+            if (text) {setMessage(text)} else {setMessage('Request submited successfully')}
         }
         setVisibility(true)
         if (visibility === false) {

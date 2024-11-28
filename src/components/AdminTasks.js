@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { useModalContext } from './ModalProvider';
 import { Container, Row, Col, Button, Form, ToggleButton, Badge } from 'react-bootstrap'
 import TableComponent from './TableComponent';
+import Avatar from './Avatar';
 
 function AdminTasks() {
 
@@ -139,6 +140,14 @@ function AdminTasks() {
     handleShowModal("Edit tasks")
   }
 
+  const option = [
+    { value: 'yellow', label: 'Yellow', color: '#FFC400' },
+    { value: 'green', label: 'Green', color: '#36B37E' },
+    { value: 'forest', label: 'Forest', color: '#00875A' },
+    { value: 'slate', label: 'Slate', color: '#253858' },
+    { value: 'silver', label: 'Silver', color: '#666666' },
+  ]
+
   return (
     <Container>
       <Row>
@@ -158,13 +167,20 @@ function AdminTasks() {
         </Col>
         <Col>
           <div className='m0-box'>
-            <h5>{activeList.name} List</h5>
+            <h5>{activeList.name} 
+              List 
+              <i class="fa-solid fa-pen-to-square float-r"></i>
+            </h5>
             <div className='br mb-3'></div>
             <Row>
               <Col>
               <p>Projects: <Badge bg="primary">SyncHR</Badge><Badge bg="success">Internal</Badge></p>
               <p>Tasks no: {activeList.tasks.length}</p>
-              <p>Most used by: Development Team</p>
+              <p className='no-margin'>Most used by: </p>
+              <div className='avatar-text-div'>
+                <Avatar size={20} type='department' name='Development'/>
+                <h6 style={{marginLeft: 5}}>Development Team</h6>
+              </div>
               </Col>
               <Col className='col-4'>
                 <span>Created by: <strong>{activeList.createdBy}</strong></span>
@@ -172,7 +188,7 @@ function AdminTasks() {
                 <span>Date: <strong>{activeList.dateCreated}</strong></span>
               </Col>
             </Row>
-            <div className='br mb-3'></div>
+            <div className='br mb-3 mt-3'></div>
             <ToggleButton 
               variant='primary' 
               size='sm' 

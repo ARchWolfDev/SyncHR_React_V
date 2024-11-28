@@ -11,8 +11,13 @@ export const ModalProvider = ({ children }) => {
     const [modalTitle, setModalTitle] = useState("");
     const [modalContent, setModalContent] = useState(() => () => null); // Updated to store a component function
     const [value, setValue] = useState({});
+    const [modalSize, setModalSize] = useState('lg')
+    // large -> lg
+    // medium -> md
+    // small -> sm
 
-  const handleShowModal = (title, ContentComponent) => {
+  const handleShowModal = (title, ContentComponent, size) => {
+    setModalSize(size)
     setModalTitle(title);
     setModalContent(() => ContentComponent); // Store component as a function to allow rerender
     setModalShow(true);
@@ -39,6 +44,7 @@ export const ModalProvider = ({ children }) => {
         value={value} // Pass the value to re-render the form correctly
         setValue={setValue}
         handleSaveChanges={handleSaveChanges}
+        size={modalSize}
       />
     </ModalContext.Provider>
   );
