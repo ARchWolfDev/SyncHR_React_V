@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Button, Col, Container, Form, Row, ToggleButton } from 'react-bootstrap'
 import TableComponent from './TableComponent'
+import { List } from '@mui/material';
+import { useModalContext } from './ModalProvider';
 
 function AdminRoles() {
 
@@ -62,9 +64,22 @@ function AdminRoles() {
   const [departmentList, setDepartmentList] = useState(departments)
   const [activeList, setActiveList] = useState(departments[0])
   const [checked, setChecked] = useState(false)
+  const [checkedRoles, setCheckedRoles] = useState([])
   const [newRole, setNewRole] = useState('')
+  const inputRef = useRef(null)
+  const {handleShowModal} = useModalContext()
 
-  const handleToggleButton = () => {setChecked(!checked)}
+  const handleActiveList = (department) => {
+    setActiveList(department)
+    setCheckedRoles([])
+  }
+
+  const handleToggleButton = () => {
+    setChecked(!checked)
+    if (!checked) {
+      setTimeout(() => inputRef.current?.focus(), 0)
+    }
+  }
   const handleAddForm = (e) => {
     e.preventDefault()
     const newRoleToAdd = {
@@ -79,14 +94,34 @@ function AdminRoles() {
     setDepartmentList(updatedDepartmentList)
     const updatedActiveList = updatedDepartmentList.find((department) => department.id === activeList.id)
     setActiveList(updatedActiveList)
-
   }
+  const handleDeleteRole = () => {
+    const updatedDepartmentsList = departmentList.map((dep) => {
+      if (dep.id === activeList.id) {
+        const remainingRoles = dep.roles.filter(
+          (role) => !checkedRoles.some((checkedRole) => checkedRole.id === role.id)
+        )
+        return {...dep, roles: remainingRoles}
+      }
+      return dep
+    })
+    setDepartmentList(updatedDepartmentsList)
+    const updatedActiveList = updatedDepartmentsList.find((list) => list.id === activeList.id)
+    setActiveList(updatedActiveList)
+    setCheckedRoles([])
+  }
+
+  const handleEditRoles = () => {
+    handleShowModal('Edit role', "EditRole", 'md')
+  }
+
+
 
   const renderAddForm = () => {
     if (checked) {
       return (
         <Form style={{marginTop: 10, display: checked?'flex':'none'}} onSubmit={handleAddForm}>
-          <Form.Control size='sm' style={{marginRight: 10}} onChange={(e) => setNewRole(e.target.value)}/>
+          <Form.Control size='sm' style={{marginRight: 10}} onChange={(e) => setNewRole(e.target.value)} ref={inputRef}/>
           <Button size='sm' type='submit'>Add</Button>
         </Form>
       )
@@ -104,7 +139,7 @@ function AdminRoles() {
                   key={index}
                   type='button'
                   className={`white-box m0-box mb-3 ${activeList.id === department.id?'active-white-box': ''}`}
-                  onClick={() => setActiveList(department)}
+                  onClick={() => handleActiveList(department)}
                 >
                   {department.name}
                 </div>
@@ -124,8 +159,20 @@ function AdminRoles() {
               onClick={() => handleToggleButton()}
             >Add new
             </ToggleButton>
+            <Button 
+              variant="outline-secondary" 
+              disabled={checkedRoles <= 0} 
+              size="sm" 
+              style={{marginLeft: 5}} 
+              onClick={() => handleEditRoles()}>Edit ({checkedRoles.length})</Button>
+            <Button 
+              variant="danger" 
+              disabled={checkedRoles <= 0} 
+              size="sm" 
+              style={{float: 'right'}} 
+              onClick={handleDeleteRole}>Delete ({checkedRoles.length})</Button>
             {renderAddForm()}
-            <TableComponent tableData={activeList.roles} />
+            <TableComponent tableData={activeList.roles} onCheckedRowsChange={setCheckedRoles}/>
           </div>
         </Col>
       </Row>

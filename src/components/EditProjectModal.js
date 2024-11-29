@@ -9,7 +9,7 @@ function EditProjectModal({project}) {
         <Form.Control className='mb-3' value={project.projectName}/>
         <Form.Label>Client Name</Form.Label>
         <Form.Control className='mb-3' value={project.clientName}/>
-        <Form.Label>Client Name</Form.Label>
+        <Form.Label>Task lists assigned</Form.Label>
         <MultiSelect />
         <Form.Label>Status</Form.Label>
         <Form.Select className='mb-3'>

@@ -137,7 +137,7 @@ function AdminTasks() {
   // TODO: Create an Edit Tasks Modal Component (Rename, Move (eventualy)) 
   const handleEditTask = () => {
     console.log(checkedTasks)
-    handleShowModal("Edit tasks")
+    handleShowModal("Edit tasks", '', 'md')
   }
 
   const option = [

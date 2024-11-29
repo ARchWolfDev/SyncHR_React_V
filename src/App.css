@@ -572,6 +572,7 @@ body { background: #ddd!important; }
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10%;
 }
 .request-data {
   height: 0px;

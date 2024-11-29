@@ -58,7 +58,7 @@ function AdminRequestsTimesheets() {
         {requests.map((request) => (
             <Col className='box' key={request.userId} style={{flex: '1 1 100%'}}>
                 <div className='request-header'>
-                    <div className='avatar-text-div' style={{width: '20%'}}>
+                    <div className='avatar-text-div' style={{flex: 1}}>
                         <Avatar size={75} name={request.userName}/>
                         <h5>{request.userName}</h5>
                     </div>
@@ -84,7 +84,7 @@ function AdminRequestsTimesheets() {
                     <div className='white-box m0-box mt-2' style={{padding: 10}}>
                         <div className='date-header' type='button' onClick={() => handleExpand(request.userId)}>
                             <h6 style={{display: 'inline-block', margin: 0}}><i className="fa-solid fa-calendar-day"></i> 23 Nov 2024</h6>
-                            <Badge bg="primary" style={{marginLeft: 10}}>Total: 8h 30min</Badge>
+                            <Badge bg="secondary" style={{marginLeft: 10}}>Total: 8h 30min</Badge>
                             <Badge bg="warning" style={{float: 'right', marginLeft: 'auto'}}>Pending</Badge>
                         </div>
                         <div className={`date-table ${expandAll[request.userId]? 'show-data-table': ''}`}>

@@ -59,7 +59,7 @@ function App() {
                 </Route>
                 <Route path='profile/:id' element={<PageContent><ProfileComponent/></PageContent>} />
                 <Route path='department/:id' element={<PageContent><DepartmentComponent /></PageContent>} />
-                <Route path='testPage'element={<TestComponent/>}></Route>
+                <Route path='test'element={<TestComponent/>}></Route>
               </Routes>
           </div>
       </ModalProvider>
