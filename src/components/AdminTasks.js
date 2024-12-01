@@ -140,13 +140,13 @@ function AdminTasks() {
     handleShowModal("Edit tasks", '', 'md')
   }
 
-  const option = [
-    { value: 'yellow', label: 'Yellow', color: '#FFC400' },
-    { value: 'green', label: 'Green', color: '#36B37E' },
-    { value: 'forest', label: 'Forest', color: '#00875A' },
-    { value: 'slate', label: 'Slate', color: '#253858' },
-    { value: 'silver', label: 'Silver', color: '#666666' },
-  ]
+  // const option = [
+  //   { value: 'yellow', label: 'Yellow', color: '#FFC400' },
+  //   { value: 'green', label: 'Green', color: '#36B37E' },
+  //   { value: 'forest', label: 'Forest', color: '#00875A' },
+  //   { value: 'slate', label: 'Slate', color: '#253858' },
+  //   { value: 'silver', label: 'Silver', color: '#666666' },
+  // ]
 
   return (
     <Container>

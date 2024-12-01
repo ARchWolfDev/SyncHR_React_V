@@ -2,9 +2,8 @@ import React from 'react'
 import avatar from '../avatars/dog.png'
 import Avatar from './Avatar'
 // import { Form } from 'react-bootstrap'
-import Select from 'react-select'
-import { LineChart, lineElementClasses } from '@mui/x-charts'
-import { borderColor } from '@mui/system'
+// import Select from 'react-select'
+import { LineChart} from '@mui/x-charts'
 
 function TestComponent() {
 

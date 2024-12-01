@@ -10,7 +10,7 @@ import HomeComponent from './components/HomeComponent';
 import AdminComponent from './components/AdminComponent';
 import AdminDashboard from './components/AdminDashboard';
 import AdminRequests from './components/AdminRequests';
-import MainPage from './components/MainPage';
+// import MainPage from './components/MainPage';
 import AdminEmployees from './components/AdminEmployees';
 import AdminProjects from './components/AdminProjects';
 import AdminTasks from './components/AdminTasks';
@@ -35,7 +35,7 @@ function App() {
       <ModalProvider>
           <div className="App">
               <Routes location={location}>
-                <Route path="/" element={<MainPage />} />
+                <Route index path="/" element={<Navigate to='login'/>} />
                 <Route path='login' element={<LoginPage />} />
                 <Route path="home" element={<PageContent><HomeComponent /></PageContent>} />
                 <Route path="admin" element={<PageContent><AdminComponent /></PageContent>}>
