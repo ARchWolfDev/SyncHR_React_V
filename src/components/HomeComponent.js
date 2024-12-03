@@ -14,14 +14,9 @@ function HomeComponent() {
     const [activeTab, setActiveTab] = useState(0)
     const [activeTab2, setActiveTab2] = useState(0)
   
-    const handleNavTabs2 = (y) => {
-      setActiveTab2(y)
-    }
-  
-    const handleNavTabs = (x) => {
-      setActiveTab(x)
-    }
-  
+    const handleNavTabs2 = (y) => {setActiveTab2(y)}
+    const handleNavTabs = (x) => {setActiveTab(x)}
+    
     const renderInfoBox = () => {
       const infoBoxArray = [<PersonalInfoBox />, <JobInfoBox />, <CompanyInfoBox />]
       return (<div className='box info-box'>{infoBoxArray.at(activeTab)}</div>)

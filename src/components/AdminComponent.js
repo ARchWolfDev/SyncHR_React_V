@@ -49,9 +49,12 @@ function AdminComponent() {
               <Dropdown style={{marginLeft: '10px'}}>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">Create</Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                  <Dropdown.Item href="#/action-1">Department</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">Role</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">Project</Dropdown.Item>
+                  <Dropdown.Item href="#/action-4">Tasks List</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item>Add Employee</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
               <div className="ms-auto">
